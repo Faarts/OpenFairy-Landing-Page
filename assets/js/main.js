@@ -80,7 +80,7 @@ function frame(now){
   glow+=(((.82+heat*.25+hold*.35)*intro)-glow)*Math.min(1,dt*3);
   bgU.uPow.value=glow;
   // glow sits behind the wing: desktop keeps the tuned .62/.5, compact projects the wing onto the bg plane
-  const gx0=state.compact?.5+(state.wingX-state.W/2)*1.375/(2400*bsx):.62;
+  const gx0=state.compact?.5+(state.wingX-state.W/2)*1.375/(2400*bsx):.62+(state.wingX-state.W/2-185)*1.375/(2400*bsx);
   const gy0=state.compact?.5+(state.H/2-state.wingY)*1.375/(1500*bsy):.5;
   const gx=gx0+nx*.04, gy=gy0-ny*.05; bgU.uGlow.value.x+=(gx-bgU.uGlow.value.x)*dt*2; bgU.uGlow.value.y+=(gy-bgU.uGlow.value.y)*dt*2;
 

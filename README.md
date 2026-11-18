@@ -31,6 +31,7 @@ assets/
     metrics.css             Section 02 · Metrics (cards, progress, background layers)
     usecases.css            Section 05 · Use cases (progress rail + 4 cards with mini previews)
     usecases-variants.css   Section 05 layout explorations (rows / bento / carousel)
+    join.css                Sections 06 · Membership (member pass, perk tags, marquee ribbons) and 07 · Get Started (CTA card + API console)
     interactions.css        Small interactions for sections 02–05 (spotlight, tilt, wing lean, scene peek)
     footer.css              Footer
     responsive.css          Tablet / phone layout (< 1200px, < 760px) and touch tweaks — loaded last
@@ -60,6 +61,7 @@ assets/
     brand.js                Section 03 (diagram version): draws the diagram wires from node positions, routes a live request
     usecases-variants.js    Section 05 explorations (?s5=…): carousel; pinned stack / split / hscroll
     pin.js                  Scroll pinning for the CSS-scaled desktop page (used instead of position:sticky)
+    join.js                 S6: pass connects on view, perks follow the pointer, ribbons move with scroll · S7: console cycles model → key → request (hover holds a row)
     interactions.js         Spotlight + tilt (S2, S5), wing leans to cursor (S3), hover previews scene (S4) — mouse only
     reveal.js               Generic scroll reveal — adds .in-view to [data-reveal] sections; footer year
   images/
@@ -71,6 +73,19 @@ assets/
   libs/
     three/                  three.js r165 (vendored, MIT) + addons used (RoomEnvironment, SVGLoader)
 ```
+
+## Wide screens
+
+On desktop the 1440px canvas scales with the window until `SMAX` (1.2, about 1728px of content, set in `assets/js/config.js`).
+On wider windows it stops growing and the canvas gets wider instead: sections keep their 1440 layout and sit in the centre, while the
+hero scene, the S5 panel rules, the S6 ribbons and the footer rule run edge to edge (`--bleed`). The hero also grows to fill the
+window height, up to `HMAX` (1200 canvas px), with its content kept centred (`--vpad`).
+
+## Sections 06 & 07
+
+Layout references: agenciex.framer.website (centred tag + title, floating orange tags, tilted marquee ribbons, warm CTA card) and
+artify.framer.wiki (icons floating around a centred headline; split CTA whose product visual bleeds off the card's bottom edge).
+Both use the same tokens as the rest of the page. Button links (`Join OpenFairy`, `Get Started`, `View Developer Docs`) are still `#`.
 
 ## Type scale
 
@@ -95,7 +110,7 @@ Add `?explore` to the URL to show a small switcher (bottom-left) for flipping be
 |---|---|---|
 | `s3` | `statement` (default) · `diagram` | Section 03 |
 | `s4` | `list` (default) · `tabs` · `rows` · `scroll` · `stage` · `slides` | Section 04 — desktop only; tablet/phone always use the stacked layout |
-| `s5` | `rail` (default) · `rows` · `bento` · `carousel` · `stack` · `split` · `hscroll` · `panels` | Section 05 — desktop only. `stack`, `split`, `hscroll`, `panels` (agenciex-style sticky split panels) are pinned / scroll-driven (fall back to `rail` with reduced motion) |
+| `s5` | `panels` (default) · `rail` · `rows` · `bento` · `carousel` · `stack` · `split` · `hscroll` | Section 05 — desktop only. `stack`, `split`, `hscroll`, `panels` (agenciex-style sticky split panels) are pinned / scroll-driven (fall back to `rail` with reduced motion) |
 
 Example: `index.html?explore&s4=rows#capabilities`
 

@@ -61,3 +61,9 @@ h1 .hl{color:var(--orange)}
 
 /* reduced motion */
 @media (prefers-reduced-motion:reduce){h1 .ln>span,.cy b,.cta,.info,.hint,.nav{transition:none!important}}
+
+/* wide / tall desktop: the hero spans the whole canvas (--cw × --ah); the 1440×900 composition stays centred.
+   Each element gets margins on its anchored sides (left/right → --bleed, top/bottom → --vpad). */
+#art>.nav{margin-inline:var(--bleed,0px)}
+#art>.head,#art>.cta,#art>.info,#art>.side,#art>.callout{margin:var(--vpad,0px) var(--bleed,0px)}
+#art>.hint{margin-bottom:var(--vpad,0px)}

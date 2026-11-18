@@ -1,7 +1,7 @@
 // Exploration switcher — add ?explore to the URL to show a small panel for flipping between section variants.
 const params=new URLSearchParams(location.search);
 if(params.has('explore')){
-  const groups={s3:['statement','diagram'],s4:['list','tabs','rows','scroll','stage','slides'],s5:['rail','rows','bento','carousel','stack','split','hscroll','panels']};
+  const groups={s3:['statement','diagram'],s4:['list','tabs','rows','scroll','stage','slides'],s5:['panels','rail','rows','bento','carousel','stack','split','hscroll']};
   const labels={s3:'Section 03',s4:'Section 04',s5:'Section 05'};
   const bar=document.createElement('nav'); bar.className='explore'; bar.setAttribute('aria-label','Design explorations');
   bar.innerHTML=Object.entries(groups).map(([k,opts])=>{

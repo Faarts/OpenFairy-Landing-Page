@@ -1,7 +1,7 @@
 // WebGL renderer, artboard fitting, scene, camera and lights
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
-import { W, H, RENDER, state, COMPACT_MQ } from './config.js';
+import { W, H, SMAX, HMAX, RENDER, state, COMPACT_MQ } from './config.js';
 
 export const art=document.getElementById('art');
 
@@ -19,16 +19,25 @@ let camera=null;   // assigned below; fit() runs again once it exists
 function fit(){
   const compact=state.compact=COMPACT_MQ.matches;
   document.documentElement.classList.toggle('is-compact',compact);
+  const root=document.documentElement;
   if(compact){
-    state.S=1; page.style.transform='';
+    state.S=1; page.style.transform=''; page.style.width='';
+    state.bleed=state.vpad=0; ['--cw','--ah','--bleed','--vpad'].forEach(p=>root.style.removeProperty(p)); root.classList.remove('is-wide');
     state.W=Math.max(1,art.clientWidth); state.H=Math.max(1,art.clientHeight);
     const sw=slot.offsetWidth, sh=slot.offsetHeight;
     state.wingX=slot.offsetLeft+sw/2; state.wingY=slot.offsetTop+sh/2;
     state.wingScale=Math.min(1.8,sh*.82/263,sw*.82/246);       // icon is 246×263 design units
   }else{
-    const S=state.S=document.documentElement.clientWidth/W;
-    page.style.transform=`scale(${S})`;
-    state.W=W; state.H=H; state.wingX=905; state.wingY=478; state.wingScale=1.8;
+    // scale with the viewport up to SMAX; past that the canvas widens (CW > 1440) and sections centre in it.
+    // The hero fills the viewport height (900 … HMAX canvas px); its content stays centred via --bleed / --vpad.
+    const cw=root.clientWidth, S=state.S=Math.min(cw/W,SMAX), CW=cw/S;
+    const AH=Math.round(Math.min(HMAX,Math.max(H,innerHeight/S)));
+    const bleed=state.bleed=(CW-W)/2, vpad=state.vpad=(AH-H)/2;
+    page.style.width=CW+'px'; page.style.transform=`scale(${S})`;
+    root.style.setProperty('--cw',CW+'px'); root.style.setProperty('--ah',AH+'px');
+    root.style.setProperty('--bleed',bleed+'px'); root.style.setProperty('--vpad',vpad+'px');
+    root.classList.toggle('is-wide',bleed>.5);
+    state.W=Math.round(CW); state.H=AH; state.wingX=905+bleed; state.wingY=478+vpad; state.wingScale=1.8;
   }
   stage.style.height=(page.offsetHeight*state.S)+'px';
   renderer.setPixelRatio(RENDER?2:Math.min(2,devicePixelRatio*state.S));

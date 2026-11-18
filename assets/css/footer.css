@@ -30,3 +30,7 @@
 .foot .foot-base{transition-delay:.12s}
 .foot.in-view .foot-grid,.foot.in-view .foot-base{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.foot .foot-grid,.foot .foot-base,.foot-col .ext{transition:none!important}}
+
+/* wide screens: the top rule spans the full canvas */
+html.is-wide .foot{border-top:0}
+html.is-wide .foot::before{content:"";position:absolute;top:0;height:1px;left:calc(-1 * var(--bleed));right:calc(-1 * var(--bleed));background:var(--mist)}
