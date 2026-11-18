@@ -1,13 +1,13 @@
 // Exploration switcher — add ?explore to the URL to show a small panel for flipping between section variants.
 const params=new URLSearchParams(location.search);
 if(params.has('explore')){
-  const groups={s3:['statement','diagram'],s4:['list','tabs','rows','scroll','stage','slides'],s5:['panels','rail','rows','bento','carousel','stack','split','hscroll']};
-  const labels={s3:'Section 03',s4:'Section 04',s5:'Section 05'};
+  const groups={hero:['sheet','off'],s3:['statement','diagram'],s4:['list','tabs','rows','scroll','stage','slides'],s5:['panels','rail','rows','bento','carousel','stack','split','hscroll'],s5bg:['night','orange','light']};
+  const labels={hero:'Hero → S02',s3:'Section 03',s4:'Section 04',s5:'Section 05',s5bg:'S05 bg'};
   const bar=document.createElement('nav'); bar.className='explore'; bar.setAttribute('aria-label','Design explorations');
   bar.innerHTML=Object.entries(groups).map(([k,opts])=>{
     const cur=params.get(k)||opts[0];
     return `<div><span>${labels[k]}</span>`+opts.map(o=>{const q=new URLSearchParams(params);q.set(k,o);
-      const hash={s3:'#brand',s4:'#capabilities',s5:'#use-cases'}[k];
+      const hash={hero:'',s3:'#brand',s4:'#capabilities',s5:'#use-cases',s5bg:'#use-cases'}[k];
       return `<a href="?${q}${hash}" class="${o===cur?'on':''}">${o}</a>`;}).join('')+'</div>';
   }).join('');
   document.body.appendChild(bar);

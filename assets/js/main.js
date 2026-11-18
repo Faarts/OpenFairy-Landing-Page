@@ -1,7 +1,7 @@
 // Entry point: animation loop that ties all modules together
 import * as THREE from 'three';
 import { W, H, REDUCE, RENDER, OVR, state } from './config.js';
-import { art, canvas, renderer, scene, camera } from './renderer.js';
+import { art, canvas, renderer, scene, camera, quality } from './renderer.js';
 import { bg, bgU } from './background.js';
 import { U, holder, wing, parts } from './wing.js';        // must load before shards.js (shared seeded random)
 import { updateShards } from './shards.js';
@@ -33,6 +33,7 @@ function frame(now){
   // hold → scatter
   if(ptr.down && state.introT>=0){ hold=Math.min(1,hold+dt/0.9); } else hold=Math.max(0,hold-dt*3);
   if(ptr.down && state.introT>=0) target=Math.max(target,hold*hold*(3-2*hold));
+  target=Math.max(target,state.scrollBlast||0);              // hero-hold.js: scatter while the scroll holds
   if(OVR.blast!=null) target=OVR.blast;
   const spd = target>blast ? 5 : (state.introT>=0 && sinceIntro<2.2 ? 1.15 : 2.6);
   blast+=(target-blast)*Math.min(1,dt*spd);
@@ -108,5 +109,16 @@ window.CAP=name=>new Promise(res=>{renderer.render(scene,camera);canvas.toBlob(b
 // Only render while the hero is on screen.
 let heroOn=true;
 new IntersectionObserver(([e])=>{heroOn=e.isIntersecting;}).observe(art);
-function loop(now){requestAnimationFrame(loop);if(!heroOn&&!RENDER){last=now;return;}try{frame(now);}catch(err){console.error(err);}}
+// If frames keep running slow (GPU-bound on big / high-DPI screens), step the render resolution down (quality.k 1 → .6).
+let slow=0, prevT=0;
+function loop(now){
+  requestAnimationFrame(loop);
+  if((!heroOn||state.heroCovered)&&!RENDER){last=now;prevT=now;return;}
+  const gap=now-(prevT||now); prevT=now;
+  if(!RENDER&&state.introT>=0){
+    slow=gap>24?slow+1:Math.max(0,slow-1);
+    if(slow>20&&quality.k>.6){quality.k=Math.max(.6,quality.k-.2);quality.apply();slow=0;}
+  }
+  try{frame(now);}catch(err){console.error(err);}
+}
 requestAnimationFrame(loop);

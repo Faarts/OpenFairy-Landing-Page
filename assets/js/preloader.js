@@ -3,7 +3,7 @@ import { REDUCE, RENDER, state } from './config.js';
 
 const art=document.getElementById('art');
 const pre=document.getElementById('pre'), cnt=document.getElementById('count'), scan=document.getElementById('scan');
-if(!RENDER) document.documentElement.classList.add('is-loading'); // lock scroll until the hero is revealed
+if(!RENDER) document.documentElement.classList.add('is-loading'); // lock scroll for the first half of the intro
 const wordsEl=[...pre.querySelectorAll('.words span')];
 const t0=performance.now(); const PRE=REDUCE?200:1900;
 function preTick(now){
@@ -12,6 +12,7 @@ function preTick(now){
   cnt.textContent=String(Math.round(e*100)).padStart(3,'0');
   scan.style.top=(e*900)+'px';
   wordsEl.forEach((w,i)=>w.classList.toggle('on',e>=(i+1)/3.2));
+  if(k>=.5) document.documentElement.classList.remove('is-loading');   // don't hold the scroll for the whole intro
   if(k<1) requestAnimationFrame(preTick);
   else{ setTimeout(()=>{pre.classList.add('gone');document.documentElement.classList.remove('is-loading');art.classList.add('ready');state.introT=performance.now();},250); }
 }

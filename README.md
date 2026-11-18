@@ -31,6 +31,7 @@ assets/
     metrics.css             Section 02 · Metrics (cards, progress, background layers)
     usecases.css            Section 05 · Use cases (progress rail + 4 cards with mini previews)
     usecases-variants.css   Section 05 layout explorations (rows / bento / carousel)
+    usecases-themes.css     Section 05 background band: ?s5bg=night (default) | orange | light
     join.css                Sections 06 · Membership (member pass, perk tags, marquee ribbons) and 07 · Get Started (CTA card + API console)
     interactions.css        Small interactions for sections 02–05 (spotlight, tilt, wing lean, scene peek)
     footer.css              Footer
@@ -62,6 +63,9 @@ assets/
     usecases-variants.js    Section 05 explorations (?s5=…): carousel; pinned stack / split / hscroll
     pin.js                  Scroll pinning for the CSS-scaled desktop page (used instead of position:sticky)
     join.js                 S6: pass connects on view, perks follow the pointer, ribbons move with scroll · S7: console cycles model → key → request (hover holds a row)
+    hero-hold.js            Hero → S2 transition (desktop): ?hero=sheet (default — hero pins, wing scatters while the scroll holds, S2 rises over it) | off
+    smooth.js               Smooth, weighted wheel scrolling (Lenis); touch stays native, off with reduced motion
+    nav.js                  Floating nav: shown once the page scrolls, links scroll to sections, active section highlighted
     interactions.js         Spotlight + tilt (S2, S5), wing leans to cursor (S3), hover previews scene (S4) — mouse only
     reveal.js               Generic scroll reveal — adds .in-view to [data-reveal] sections; footer year
   images/
@@ -71,6 +75,7 @@ assets/
     capabilities/           Route node, OpenFairy mark (on dark), panel glow + texture (exported from Figma)
     brand/                  Provider marks for the inline stack + wing tile image (exported from Figma)
   libs/
+    lenis/                  Lenis 1.3.27 (vendored, MIT) — smooth scrolling
     three/                  three.js r165 (vendored, MIT) + addons used (RoomEnvironment, SVGLoader)
 ```
 
@@ -111,6 +116,8 @@ Add `?explore` to the URL to show a small switcher (bottom-left) for flipping be
 | `s3` | `statement` (default) · `diagram` | Section 03 |
 | `s4` | `list` (default) · `tabs` · `rows` · `scroll` · `stage` · `slides` | Section 04 — desktop only; tablet/phone always use the stacked layout |
 | `s5` | `panels` (default) · `rail` · `rows` · `bento` · `carousel` · `stack` · `split` · `hscroll` | Section 05 — desktop only. `stack`, `split`, `hscroll`, `panels` (agenciex-style sticky split panels) are pinned / scroll-driven (fall back to `rail` with reduced motion) |
+| `s5bg` | `night` (default) · `orange` · `light` | Section 05 background band (full-bleed; product windows stay light) |
+| `hero` | `sheet` (default) · `off` | Hero → Section 02 transition (desktop, not with reduced motion) |
 
 Example: `index.html?explore&s4=rows#capabilities`
 

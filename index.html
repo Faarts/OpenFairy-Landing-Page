@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap">
+<link rel="stylesheet" href="assets/libs/lenis/lenis.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/nav.css">
 <link rel="stylesheet" href="assets/css/hero.css">
@@ -21,12 +22,25 @@
 <link rel="stylesheet" href="assets/css/capabilities-variants.css">
 <link rel="stylesheet" href="assets/css/usecases.css">
 <link rel="stylesheet" href="assets/css/usecases-variants.css">
+<link rel="stylesheet" href="assets/css/usecases-themes.css">
 <link rel="stylesheet" href="assets/css/join.css">
 <link rel="stylesheet" href="assets/css/footer.css">
 <link rel="stylesheet" href="assets/css/interactions.css">
 <link rel="stylesheet" href="assets/css/responsive.css">
 </head>
 <body>
+<!-- floating copy of the hero nav: shown once the page scrolls (assets/js/nav.js) -->
+<div id="fnav" inert>
+  <header class="nav">
+    <a href="#" data-to="top" aria-label="OpenFairy home"><img class="logo" src="assets/images/logo/horizontal-dark.svg" alt="OpenFairy"></a>
+    <nav class="links g" aria-label="Main">
+      <a class="on" href="#" data-to="top">Home</a><a href="#capabilities" data-to="capabilities">Features</a><a href="#metrics" data-to="metrics">Metrics</a><a href="#get-started" data-to="get-started">Docs</a>
+    </nav>
+    <div class="right">
+      <a class="btn dark" href="#">Launch Platform <span class="ar">→</span></a>
+    </div>
+  </header>
+</div>
 <div id="stage">
 <div id="page">
 <div id="art">
@@ -35,7 +49,7 @@
   <header class="nav">
     <a href="#" aria-label="OpenFairy home"><img class="logo" src="assets/images/logo/horizontal-dark.svg" alt="OpenFairy"></a>
     <nav class="links g" aria-label="Main">
-      <a class="on" href="#">Home</a><a href="#">Features</a><a href="#">Metrics</a><a href="#">Docs</a>
+      <a class="on" href="#" data-to="top">Home</a><a href="#capabilities" data-to="capabilities">Features</a><a href="#metrics" data-to="metrics">Metrics</a><a href="#get-started" data-to="get-started">Docs</a>
     </nav>
     <div class="right">
       <a class="btn dark" href="#">Launch Platform <span class="ar">→</span></a>
@@ -443,7 +457,7 @@ client.chat.completions.<span class="fn">create</span>({
   <div class="gs-panel">
     <div class="gs-copy">
       <span class="of-tag on-warm">Get Started</span>
-      <h2 id="gs-title" class="gs-title"><span class="ln">Your Next Innovation</span><span class="ln"><span class="sec">Starts with</span> Access</span></h2>
+      <h2 id="gs-title" class="gs-title"><span class="ln">Your Next Innovation</span><span class="ln"><span class="sec">Starts with</span> <span class="acc">Access</span></span></h2>
       <p class="gs-lead">Choose a model, create an API key, and bring intelligence to your applications and agents.</p>
       <div class="gs-actions">
         <a class="btn dark" href="#">Get Started <span class="ar" aria-hidden="true">→</span></a>
@@ -503,6 +517,9 @@ client.chat.completions.<span class="fn">create</span>({
 
 <script type="importmap">{"imports":{"three":"./assets/libs/three/three.module.min.js","three/addons/":"./assets/libs/three/addons/"}}</script>
 <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/smooth.js"></script>
+<script type="module" src="assets/js/hero-hold.js"></script>
+<script type="module" src="assets/js/nav.js"></script>
 <script type="module" src="assets/js/metrics.js"></script>
 <script type="module" src="assets/js/statement.js"></script>
 <script type="module" src="assets/js/brand.js"></script>

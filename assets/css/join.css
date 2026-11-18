@@ -9,9 +9,9 @@
 /* shared pill tag (agenciex section tags) */
 .of-tag{display:inline-block;padding:6px 12px;border-radius:99px;border:1px solid rgba(247,127,6,.32);background:rgba(247,127,6,.1);
   font-family:var(--f-mono);font-weight:600;font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--ember-lo)}
-.of-tag.on-warm{border-color:rgba(26,23,20,.14);background:rgba(255,255,255,.55);color:var(--ink)}
-.btn.line{color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1px rgba(26,23,20,.35)}
-.btn.line:hover{background:rgba(255,255,255,.4)}
+.of-tag.on-warm{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.28);color:var(--ink)}
+.btn.line{color:var(--ink);background:transparent;box-shadow:inset 0 0 0 1px rgba(26,23,20,.45)}
+.btn.line:hover{background:rgba(255,255,255,.25)}
 .mem .btn,.gs .btn{cursor:pointer}
 .mem .btn:focus-visible,.gs .btn:focus-visible{outline:2px solid var(--ink);outline-offset:3px}
 
@@ -98,25 +98,26 @@
 /* ============================== 07 · Get started ============================== */
 .gs{position:relative;width:1440px;padding:140px 48px 150px}
 .gs-panel{position:relative;display:grid;grid-template-columns:600px 1fr;gap:56px;align-items:center;min-height:600px;padding:80px 72px 0;border-radius:32px;overflow:hidden;isolation:isolate;
-  background:radial-gradient(90% 120% at 92% 110%,var(--orange) 0%,#FF9C3F 32%,#FFC58A 62%,#FFE6CC 88%,#FFF1E2 100%);
-  box-shadow:0 50px 90px -50px rgba(216,92,0,.55),inset 0 1px 0 rgba(255,255,255,.7)}
+  background:radial-gradient(80% 110% at 12% 0%,#FFA24A 0%,rgba(255,162,74,0) 60%),linear-gradient(160deg,#FF9433 0%,var(--orange) 45%,#E86A00 100%);
+  box-shadow:0 50px 90px -50px rgba(216,92,0,.7),inset 0 1px 0 rgba(255,255,255,.45)}
 /* hairline grid inside the card, continuing the page grid */
 .gs-panel::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:linear-gradient(to right,rgba(255,255,255,.4) 1px,transparent 1px) -1px 0/224px 100% repeat-x}
+  background:linear-gradient(to right,rgba(255,255,255,.2) 1px,transparent 1px) -1px 0/224px 100% repeat-x}
 .gs-panel::after{content:"";position:absolute;z-index:-1;left:var(--gx,70%);top:var(--gy,40%);width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;pointer-events:none;
-  background:radial-gradient(closest-side,rgba(255,255,255,.45),rgba(255,255,255,0));transition:left .8s cubic-bezier(.16,1,.3,1),top .8s cubic-bezier(.16,1,.3,1)}
+  background:radial-gradient(closest-side,rgba(255,255,255,.28),rgba(255,255,255,0));transition:left .8s cubic-bezier(.16,1,.3,1),top .8s cubic-bezier(.16,1,.3,1)}
 .gs-copy{align-self:center;padding-bottom:80px}
 .gs-title{margin:24px 0 0;font-family:var(--f-display);font-weight:400;font-size:var(--fs-h2);line-height:1;letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
 .gs-title .ln{display:block}
-.gs-title .sec{color:rgba(26,23,20,.58)}
-.gs-lead{margin:28px 0 0;max-width:460px;font-family:var(--f-body);font-size:var(--fs-lead);line-height:1.5;color:rgba(26,23,20,.78)}
+.gs-title .sec{color:rgba(26,23,20,.6)}
+.gs-title .acc{color:#fff}
+.gs-lead{margin:28px 0 0;max-width:460px;font-family:var(--f-body);font-size:var(--fs-lead);line-height:1.5;color:rgba(26,23,20,.82)}
 .gs-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 
 /* console */
 /* the console sits on the card's bottom edge and bleeds out of it (artify CTA) */
 .gs-console{position:relative;align-self:end;display:flex;flex-direction:column;gap:10px;padding:14px 14px 22px;border-radius:24px 24px 0 0;border-bottom:0;
-  background:rgba(255,255,255,.5);border:1px solid var(--glass-edge);backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
-  box-shadow:0 30px 60px -30px rgba(26,23,20,.3),inset 0 1px 0 rgba(255,255,255,.9)}
+  background:rgba(255,250,244,.9);border:1px solid rgba(255,255,255,.8);backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+  box-shadow:0 30px 60px -30px rgba(120,45,0,.5),inset 0 1px 0 rgba(255,255,255,.9)}
 .gs-row{position:relative;display:flex;flex-direction:column;gap:12px;padding:16px 18px;border-radius:14px;border:1px solid transparent;
   transition:background-color .5s,border-color .5s,opacity .5s}
 .gs-row:not(:last-child)::after{content:"";position:absolute;left:18px;right:18px;bottom:-6px;height:1px;background:rgba(26,23,20,.08)}

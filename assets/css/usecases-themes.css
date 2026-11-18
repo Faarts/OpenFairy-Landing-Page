@@ -1,0 +1,75 @@
+/* ==========================================================================
+   Section 05 · background themes — ?s5bg=night (default) | orange | light
+   The section gets a full-bleed band; the product windows stay light so they read as "the product".
+   Set by usecases-variants.js (data-bg on #use-cases).
+   ========================================================================== */
+.uses[data-bg="night"],.uses[data-bg="orange"]{isolation:isolate;margin-top:0}
+/* full-bleed band (the section is 1440 wide; --bleed is the extra canvas on wide screens) */
+.uses[data-bg="night"]::after,.uses[data-bg="orange"]::after{content:"";position:absolute;z-index:-1;top:0;bottom:0;
+  left:calc(-1 * var(--bleed,0px));right:calc(-1 * var(--bleed,0px));pointer-events:none}
+
+/* ---------------- night ---------------- */
+.uses[data-bg="night"]{--u-bg:var(--night);--u-fg:var(--frost);--u-dim:rgba(244,243,241,.52);--u-line:rgba(244,243,241,.09);color:var(--frost)}
+.uses[data-bg="night"]::after{background:radial-gradient(60% 50% at 82% 0%,rgba(247,127,6,.16),rgba(247,127,6,0) 70%),var(--night)}
+.uses[data-bg="night"]::before{background-image:linear-gradient(to right,rgba(244,243,241,.06) 1px,transparent 1px);border-right-color:rgba(244,243,241,.06)}
+.uses[data-bg="night"] .u-title{color:var(--frost)}
+.uses[data-bg="night"] .u-title .sec{color:var(--u-dim)}
+.uses[data-bg="night"] .u-title .brand-c{color:var(--orange)}
+/* panels */
+.uses[data-bg="night"] .u-panel{background:var(--night);border-top-color:var(--u-line);box-shadow:0 -40px 80px -40px rgba(0,0,0,.7)}
+.uses[data-bg="night"] .u-pl{border-right-color:var(--u-line)}
+.uses[data-bg="night"] .u-pl::before{background:radial-gradient(closest-side,rgba(247,127,6,.38),rgba(216,92,0,.14) 55%,rgba(247,127,6,0))}
+.uses[data-bg="night"] .u-pidx{background:rgba(244,243,241,.06);border-color:var(--u-line);color:var(--frost)}
+.uses[data-bg="night"] .u-ph{border-bottom-color:var(--u-line)}
+.uses[data-bg="night"] .u-ph h3{color:var(--u-dim)}
+.uses[data-bg="night"] .u-ph h3 b,.uses[data-bg="night"] .u-arrow{color:var(--frost)}
+.uses[data-bg="night"] .u-pd{color:rgba(244,243,241,.66)}
+.uses[data-bg="night"] .u-pbtn{background:var(--frost);color:var(--ink)}
+.uses[data-bg="night"] .u-win{background:rgba(250,249,247,.96);border-color:rgba(255,255,255,.2);box-shadow:0 50px 90px -40px rgba(0,0,0,.8)}
+/* cards (rail / compact) */
+.uses[data-bg="night"] .u-rail-end{color:var(--u-dim)}
+.uses[data-bg="night"] .u-rail-track{background:var(--u-line)}
+.uses[data-bg="night"] .u-rail-track b{background:var(--night);border-color:rgba(244,243,241,.2)}
+.uses[data-bg="night"] .u-rail-track b.on{border-color:var(--orange)}
+.uses[data-bg="night"] .u-card{background:rgba(244,243,241,.05);border-color:var(--u-line);box-shadow:none;backdrop-filter:none;-webkit-backdrop-filter:none}
+.uses[data-bg="night"] .u-card:hover{background:rgba(244,243,241,.09)}
+.uses[data-bg="night"] .u-idx{background:rgba(244,243,241,.06);border-color:var(--u-line);color:var(--frost)}
+.uses[data-bg="night"] .u-card:hover .u-idx{background:var(--orange);border-color:var(--orange);color:var(--ink)}
+.uses[data-bg="night"] .u-name{color:var(--frost)}
+.uses[data-bg="night"] .u-desc{color:rgba(244,243,241,.62)}
+.uses[data-bg="night"] .u-viz{background:var(--frost);border-color:transparent}
+
+/* ---------------- orange ---------------- */
+.uses[data-bg="orange"]{--u-line:rgba(26,23,20,.12)}
+.uses[data-bg="orange"]::after{background:linear-gradient(180deg,#FF9A3C 0%,var(--orange) 45%,#E86A00 100%)}
+.uses[data-bg="orange"]::before{background-image:linear-gradient(to right,rgba(255,255,255,.22) 1px,transparent 1px);border-right-color:rgba(255,255,255,.22)}
+.uses[data-bg="orange"] .u-title .sec{color:rgba(26,23,20,.58)}
+.uses[data-bg="orange"] .u-title .brand-c{color:#fff}
+.uses[data-bg="orange"] .u-panel{background:linear-gradient(180deg,#FF9A3C 0%,var(--orange) 55%,#EE7300 100%);border-top-color:rgba(255,255,255,.3);box-shadow:0 -40px 80px -40px rgba(120,45,0,.55)}
+.uses[data-bg="orange"] .u-pl{border-right-color:rgba(255,255,255,.28)}
+.uses[data-bg="orange"] .u-pl::before{background:radial-gradient(closest-side,rgba(255,255,255,.4),rgba(255,226,190,.16) 55%,rgba(255,255,255,0))}
+.uses[data-bg="orange"] .u-pidx{background:rgba(255,255,255,.3);border-color:rgba(255,255,255,.5)}
+.uses[data-bg="orange"] .u-ph{border-bottom-color:var(--u-line)}
+.uses[data-bg="orange"] .u-ph h3{color:rgba(26,23,20,.58)}
+.uses[data-bg="orange"] .u-pd{color:rgba(26,23,20,.78)}
+.uses[data-bg="orange"] .u-win{background:rgba(255,253,250,.95);border-color:rgba(255,255,255,.7);box-shadow:0 50px 90px -40px rgba(120,45,0,.6)}
+/* the orange tag would vanish on orange: make it ink */
+.uses[data-bg="orange"] .u-ptag{background:var(--night);color:var(--frost);box-shadow:0 24px 40px -20px rgba(26,23,20,.5)}
+.uses[data-bg="orange"] .u-rail-end{color:rgba(26,23,20,.7)}
+.uses[data-bg="orange"] .u-rail-track{background:rgba(26,23,20,.15)}
+.uses[data-bg="orange"] .u-rail-fill{background:var(--ink)}
+.uses[data-bg="orange"] .u-rail-track b.on{border-color:var(--ink)}
+.uses[data-bg="orange"] .u-card{background:rgba(255,255,255,.22);border-color:rgba(255,255,255,.45)}
+.uses[data-bg="orange"] .u-card:hover{background:rgba(255,255,255,.34)}
+.uses[data-bg="orange"] .u-desc{color:rgba(26,23,20,.75)}
+.uses[data-bg="orange"] .u-idx{background:rgba(255,255,255,.35);border-color:rgba(255,255,255,.6)}
+.uses[data-bg="orange"] .u-viz{background:rgba(255,253,250,.92)}
+
+/* panels end flush with the band; the rail/card layouts need bottom room inside it */
+@media (max-width:1199.98px){
+  .uses[data-bg="night"],.uses[data-bg="orange"]{padding-bottom:var(--sec)!important}
+  #membership{margin-top:0}
+}
+
+/* the first panel sits right under the title — no cast shadow there (later panels keep theirs while they slide over) */
+.uses .u-panel[data-n="1"]{box-shadow:none}

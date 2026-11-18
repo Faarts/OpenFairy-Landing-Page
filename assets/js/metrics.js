@@ -47,5 +47,5 @@ if(section){
     visible=e.isIntersecting;
     if(visible&&!revealed){revealed=true;section.classList.add('in-view');countUp();}
     schedule();
-  },{threshold:.35}).observe(section);
+  },{threshold:.18}).observe(section);   // low enough that the title shows while the section rises over the hero
 }

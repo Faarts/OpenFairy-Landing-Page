@@ -13,3 +13,29 @@
 .btn.ghost{color:var(--ink)}
 .btn .ar{display:inline-block;transition:transform .25s}
 .btn:hover .ar{transform:translateX(3px)}
+
+/* ---------- floating nav (assets/js/nav.js) ----------
+   Outside the scaled #page: on desktop it is a --cw wide strip scaled by --s, so it lines up with the hero nav. */
+#fnav{position:fixed;left:0;top:0;z-index:150;width:var(--cw,1440px);height:0;transform:scale(var(--s,1));transform-origin:0 0;pointer-events:none}
+#fnav .nav{top:16px;height:60px;margin-inline:var(--bleed,0px);padding:0 7px 0 22px;border-radius:99px;
+  background:rgba(244,243,241,.78);backdrop-filter:blur(18px) saturate(1.3);-webkit-backdrop-filter:blur(18px) saturate(1.3);
+  border:1px solid rgba(255,255,255,.85);box-shadow:0 20px 44px -26px rgba(26,23,20,.4);
+  opacity:0;transform:translateY(-16px);transition:opacity .35s,transform .5s cubic-bezier(.16,1,.3,1)}
+#fnav .links{background:rgba(255,255,255,.6);backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:none}
+#fnav .btn{cursor:pointer}
+#fnav a:focus-visible{outline:2px solid var(--orange);outline-offset:3px}
+html.nav-float #fnav .nav{opacity:1;transform:none;pointer-events:auto}
+/* the hero's own nav steps aside while the floating one is shown */
+html.nav-float #art .nav{opacity:0;pointer-events:none;transition:opacity .25s}
+.nav .links a{cursor:pointer}
+
+@media (max-width:1199.98px){
+  #fnav{width:100%;transform:none}
+  #fnav .nav{left:var(--g);right:var(--g);margin:0;top:10px;height:56px;padding-left:18px}
+}
+@media (max-width:759.98px){
+  #fnav .links{display:none}
+  #fnav .btn{padding:11px 16px}
+  #fnav .nav{height:52px}
+}
+@media (prefers-reduced-motion:reduce){#fnav .nav{transition:none}}

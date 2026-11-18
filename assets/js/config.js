@@ -11,4 +11,4 @@ export const HMAX=1200;                          // the desktop hero grows to th
 export const COMPACT_MQ=matchMedia(`(max-width:${BREAKPOINT-.02}px)`);
 // S = page scale (desktop) · introT = intro start time
 // hero scene box: W×H = hero size in px, wingX/Y = wing centre inside it, wingScale = wing size, compact = fluid layout
-export const state={bleed:0,vpad:0,S:1,introT:-1,W,H,wingX:905,wingY:478,wingScale:1.8,compact:false};
+export const state={scrollBlast:0,heroCovered:false,bleed:0,vpad:0,S:1,introT:-1,W,H,wingX:905,wingY:478,wingScale:1.8,compact:false};

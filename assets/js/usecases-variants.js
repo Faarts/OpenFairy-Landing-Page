@@ -11,6 +11,9 @@ const want=VARIANTS.includes(v)?v:'panels';
 const variant=REDUCE&&PINNED.includes(want)?'rail':want;
 if(section){
   section.dataset.variant=variant;
+  // background band: ?s5bg=night (default) | orange | light
+  const bg=new URLSearchParams(location.search).get('s5bg');
+  section.dataset.bg=['night','orange','light'].includes(bg)?bg:'night';
 
   const title=section.querySelector('.u-title'), rail=section.querySelector('.u-rail'), list=section.querySelector('.u-cards');
   const cards=[...section.querySelectorAll('.u-card')];

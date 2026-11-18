@@ -16,13 +16,17 @@ renderer.setSize(W,H,false);
 const page=document.getElementById('page'), stage=document.getElementById('stage');
 const slot=document.querySelector('.wing-slot');
 let camera=null;   // assigned below; fit() runs again once it exists
+// Render resolution: capped at 1.5 device px per CSS px (the glass uses a transmission pass, which redraws the
+// scene every frame), times an adaptive factor that main.js lowers when frames run slow.
+const PR_MAX=1.5;
+export const quality={k:1,apply(){renderer.setPixelRatio(RENDER?2:Math.max(.5,Math.min(PR_MAX,devicePixelRatio*state.S)*this.k));renderer.setSize(state.W,state.H,false);}};
 function fit(){
   const compact=state.compact=COMPACT_MQ.matches;
   document.documentElement.classList.toggle('is-compact',compact);
   const root=document.documentElement;
   if(compact){
     state.S=1; page.style.transform=''; page.style.width='';
-    state.bleed=state.vpad=0; ['--cw','--ah','--bleed','--vpad'].forEach(p=>root.style.removeProperty(p)); root.classList.remove('is-wide');
+    state.bleed=state.vpad=0; ['--s','--cw','--ah','--bleed','--vpad'].forEach(p=>root.style.removeProperty(p)); root.classList.remove('is-wide');
     state.W=Math.max(1,art.clientWidth); state.H=Math.max(1,art.clientHeight);
     const sw=slot.offsetWidth, sh=slot.offsetHeight;
     state.wingX=slot.offsetLeft+sw/2; state.wingY=slot.offsetTop+sh/2;
@@ -34,14 +38,13 @@ function fit(){
     const AH=Math.round(Math.min(HMAX,Math.max(H,innerHeight/S)));
     const bleed=state.bleed=(CW-W)/2, vpad=state.vpad=(AH-H)/2;
     page.style.width=CW+'px'; page.style.transform=`scale(${S})`;
-    root.style.setProperty('--cw',CW+'px'); root.style.setProperty('--ah',AH+'px');
+    root.style.setProperty('--s',String(S)); root.style.setProperty('--cw',CW+'px'); root.style.setProperty('--ah',AH+'px');
     root.style.setProperty('--bleed',bleed+'px'); root.style.setProperty('--vpad',vpad+'px');
     root.classList.toggle('is-wide',bleed>.5);
     state.W=Math.round(CW); state.H=AH; state.wingX=905+bleed; state.wingY=478+vpad; state.wingScale=1.8;
   }
   stage.style.height=(page.offsetHeight*state.S)+'px';
-  renderer.setPixelRatio(RENDER?2:Math.min(2,devicePixelRatio*state.S));
-  renderer.setSize(state.W,state.H,false);
+  quality.apply();
   if(camera){
     camera.fov=2*Math.atan((state.H/2)/Z)*180/Math.PI; camera.aspect=state.W/state.H; camera.updateProjectionMatrix();
   }
