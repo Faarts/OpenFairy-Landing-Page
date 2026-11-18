@@ -2,6 +2,7 @@
 import * as THREE from 'three';
 import { scene } from './renderer.js';
 import { rnd } from './utils.js';
+import { state } from './config.js';
 
 const shardN=30;
 const shardGeo=new THREE.BoxGeometry(1,1,1);
@@ -22,6 +23,8 @@ for(let i=0;i<12;i++) sh.push(mkShard(true));
 const m4=new THREE.Matrix4(), q=new THREE.Quaternion(), sc=new THREE.Vector3(), tmpE=new THREE.Euler();
 
 export function updateShards(t,dt,nx,ny,blast,heat,intro){
+  // the shard field is laid out for the 1440×900 desktop scene; in the stacked compact layout it would cross the text
+  shardsW.visible=shardsK.visible=!state.compact; if(state.compact) return;
   let iw=0,ik=0;
   sh.forEach(s=>{
     const away=new THREE.Vector3(s.base.x-185,s.base.y,0).normalize();

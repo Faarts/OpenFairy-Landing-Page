@@ -2,8 +2,8 @@
 import * as THREE from 'three';
 import { W, H, REDUCE, RENDER, OVR, state } from './config.js';
 import { art, canvas, renderer, scene, camera } from './renderer.js';
-import { bgU } from './background.js';
-import { U, holder, parts } from './wing.js';        // must load before shards.js (shared seeded random)
+import { bg, bgU } from './background.js';
+import { U, holder, wing, parts } from './wing.js';        // must load before shards.js (shared seeded random)
 import { updateShards } from './shards.js';
 import { spawnStreak, updateStreaks } from './streaks.js';
 import { ptr, cur, curT, ring, coord, stateEl } from './pointer.js';
@@ -17,7 +17,14 @@ function frame(now){
   const dt=Math.min(.05,(now-last)/1000); last=now; const t=now/1000;
   U.uTime.value=t; bgU.uTime.value=t%10;
   ptr.x+=(ptr.tx-ptr.x)*Math.min(1,dt*14); ptr.y+=(ptr.ty-ptr.y)*Math.min(1,dt*14);
-  const nx=(ptr.x/W)*2-1, ny=(ptr.y/H)*2-1;
+  const nx=(ptr.x/state.W)*2-1, ny=(ptr.y/state.H)*2-1;
+
+  // hero scene box (desktop: the 1440×900 design; compact: measured in renderer.js fit())
+  const ws=state.wingScale; wing.scale.set(ws,-ws,ws);
+  holder.position.x=state.wingX-state.W/2;
+  // background plane must cover the view at its depth (z -600 → 1.375× the screen size)
+  const bsx=Math.max(1,state.W*1.4/2400), bsy=Math.max(1,state.H*1.4/1500);
+  bg.scale.set(bsx,bsy,1); bgU.uAspect.value=(2400*bsx)/(1500*bsy);
 
   // intro: shards assemble into the wing
   let target=0;
@@ -38,7 +45,7 @@ function frame(now){
   holder.rotation.y+=((OVR.ry!=null?OVR.ry:turn+nx*.32)-holder.rotation.y)*Math.min(1,dt*3);
   holder.rotation.x+=((.1+ny*.18)-holder.rotation.x)*Math.min(1,dt*3);
   holder.rotation.z=Math.sin(t*.21)*.03;
-  holder.position.y=H/2-478+Math.sin(t*.8)*8;
+  holder.position.y=state.H/2-state.wingY+Math.sin(t*.8)*8;
   parts.forEach((p,k)=>{
     const ph=k===0?0:k===1?2.3:k*1.1;
     const target=(hovered===p?1:0); p.lift+=(target-p.lift)*Math.min(1,dt*6);
@@ -72,7 +79,10 @@ function frame(now){
   const intro=state.introT<0?0:Math.min(1,sinceIntro/1.4);
   glow+=(((.82+heat*.25+hold*.35)*intro)-glow)*Math.min(1,dt*3);
   bgU.uPow.value=glow;
-  const gx=.62+nx*.04, gy=.5-ny*.05; bgU.uGlow.value.x+=(gx-bgU.uGlow.value.x)*dt*2; bgU.uGlow.value.y+=(gy-bgU.uGlow.value.y)*dt*2;
+  // glow sits behind the wing: desktop keeps the tuned .62/.5, compact projects the wing onto the bg plane
+  const gx0=state.compact?.5+(state.wingX-state.W/2)*1.375/(2400*bsx):.62;
+  const gy0=state.compact?.5+(state.H/2-state.wingY)*1.375/(1500*bsy):.5;
+  const gx=gx0+nx*.04, gy=gy0-ny*.05; bgU.uGlow.value.x+=(gx-bgU.uGlow.value.x)*dt*2; bgU.uGlow.value.y+=(gy-bgU.uGlow.value.y)*dt*2;
 
   updateShards(t,dt,nx,ny,blast,heat,intro);
 

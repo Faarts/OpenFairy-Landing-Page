@@ -2,10 +2,19 @@
 :root{
   --frost:#F4F3F1; --sheet:#FFFFFF; --glass:rgba(255,255,255,.52); --glass-edge:rgba(255,255,255,.9);
   --mist:#E6E2DD; --graphite:#6B645D; --ink:#1A1714; --orange:#F77F06; --ember-hi:#FFB463; --ember-lo:#D85C00; --night:#14110F;
+  /* desktop type scale (compact sizes live in responsive.css) */
+  --fs-display:96px;  /* S3 statement */
+  --fs-h2:64px;       /* section titles */
+  --fs-feature:40px;  /* titles in full-width panels / large cards */
+  --fs-item:30px;     /* list & row titles */
+  --fs-card:24px;     /* card titles */
+  --fs-lead:20px;     /* lead paragraphs */
+  --fs-body:15px;     /* body copy */
   --f-display:"Inter Tight","Helvetica Neue",Arial,sans-serif; --f-body:"Inter","Helvetica Neue",Arial,sans-serif; --f-mono:"Archivo","Helvetica Neue",Arial,sans-serif; --f-code:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
+[hidden]{display:none!important}
 html,body{margin:0;background:var(--frost);color:var(--ink);font-family:var(--f-body)}
 html{overflow-x:hidden}
 html.is-loading{overflow:hidden}

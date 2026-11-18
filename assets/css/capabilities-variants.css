@@ -1,0 +1,99 @@
+/* ==========================================================================
+   Section 04 · layout explorations (switch with ?s4=list|tabs|rows|scroll, or ?explore for the switcher)
+   Desktop only (≥ 1200px). Below that every variant uses the stacked compact layout from responsive.css.
+   The default (list) is defined in capabilities.css.
+   ========================================================================== */
+@media (min-width:1200px){
+
+/* ---------- TABS: four capabilities across the page, full-width visual stage below ---------- */
+.caps[data-variant="tabs"]{height:1250px}
+.caps[data-variant="tabs"]::before{background-size:336px 100%}          /* 4-column grid to match the tabs */
+.caps[data-variant="tabs"] .c-list{top:340px;width:1344px;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:0}
+.caps[data-variant="tabs"] .c-item{padding:22px 28px 0 0;border-top:1px solid var(--mist)}
+.caps[data-variant="tabs"] .c-item::before{height:2px;top:-1.5px}
+.caps[data-variant="tabs"] .c-name{font-size:var(--fs-card);line-height:1.15}
+.caps[data-variant="tabs"] .c-plus{display:none}
+.caps[data-variant="tabs"] .c-item .c-panel{grid-template-rows:1fr}                       /* every description visible… */
+.caps[data-variant="tabs"] .c-desc{width:auto;padding:12px 0 0;opacity:.45}
+.caps[data-variant="tabs"] .c-item.is-active .c-desc{opacity:1}                          /* …the open one at full strength */
+.caps[data-variant="tabs"] .c-trigger{cursor:pointer}
+.caps[data-variant="tabs"] .c-visual{left:48px;top:600px;width:1344px;height:520px}
+.caps[data-variant="tabs"] .c-providers{left:363px;top:58px}
+.caps[data-variant="tabs"] .c-entry{left:749px;top:168px}
+.caps[data-variant="tabs"] .c-glow{left:520px;top:60px}
+
+/* ---------- ROWS: full-width rows; the open row reveals its description + visual inline ---------- */
+.caps[data-variant="rows"]{height:auto;padding:150px 48px 140px}
+.caps[data-variant="rows"] .c-title{position:static}
+.caps[data-variant="rows"] .c-list{position:static;width:auto;margin-top:64px}
+.caps[data-variant="rows"] .c-item{padding:26px 0}
+.caps[data-variant="rows"] .c-name{font-size:var(--fs-item)}
+.caps[data-variant="rows"] .c-panel-in{display:grid;grid-template-columns:448px 896px;align-items:start}
+.caps[data-variant="rows"] .c-desc{width:auto;max-width:380px;padding:22px 0 0;font-size:15px}
+.caps[data-variant="rows"] .c-visual{position:relative;left:auto;top:auto;width:896px;height:480px;margin:22px 0 4px}
+.caps[data-variant="rows"] .c-providers{left:139px;top:38px}
+.caps[data-variant="rows"] .c-entry{left:525px;top:148px}
+.caps[data-variant="rows"] .c-glow{left:330px;top:20px}
+
+/* ---------- SCROLL: the section pins while each capability opens in turn (capabilities-variants.js) ---------- */
+.caps[data-variant="scroll"]{height:2800px}
+.caps[data-variant="scroll"] .c-pin{position:absolute;left:0;top:0;width:1440px;height:880px;transform:translateY(var(--pin,0px))}
+.caps[data-variant="scroll"] .c-list.is-auto .c-item.is-active::before{animation:none}
+.caps[data-variant="scroll"] .c-item.is-active::before{width:calc(var(--item-p,1) * 100%);background:var(--orange)}
+.caps[data-variant="scroll"] .c-scroll-hint{position:absolute;left:48px;bottom:56px;font-family:var(--f-code);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite)}
+}
+.c-scroll-hint{display:none}
+@media (min-width:1200px){ .caps[data-variant="scroll"] .c-scroll-hint{display:block} }
+
+@media (min-width:1200px){
+/* ---------- STAGE: centred title, big centred visual, capability pills + description underneath ---------- */
+.caps[data-variant="stage"]{height:1190px}
+.caps[data-variant="stage"] .c-title{left:48px;width:1344px;top:140px;text-align:center}
+.caps[data-variant="stage"] .c-visual{left:272px;top:320px;width:896px;height:520px}
+.caps[data-variant="stage"] .c-providers{left:139px;top:58px}
+.caps[data-variant="stage"] .c-entry{left:525px;top:168px}
+.caps[data-variant="stage"] .c-glow{left:330px;top:40px}
+.caps[data-variant="stage"] .c-list{top:880px;left:48px;width:1344px;display:flex;justify-content:center;gap:8px;border:0}
+.caps[data-variant="stage"] .c-item{padding:0;border:0}
+.caps[data-variant="stage"] .c-item::before{display:none}
+.caps[data-variant="stage"] .c-trigger{gap:0;padding:11px 18px;border-radius:99px;border:1px solid var(--mist);background:rgba(255,255,255,.5);cursor:pointer;transition:background-color .3s,border-color .3s}
+.caps[data-variant="stage"] .c-trigger:hover{background:#fff}
+.caps[data-variant="stage"] .c-name{flex:none;font-family:var(--f-body);font-weight:500;font-size:14.5px;letter-spacing:-.01em;color:var(--graphite)}
+.caps[data-variant="stage"] .c-item.is-active .c-trigger{background:var(--ink);border-color:var(--ink)}
+.caps[data-variant="stage"] .c-item.is-active .c-name{color:var(--frost)}
+.caps[data-variant="stage"] .c-plus,.caps[data-variant="stage"] .c-panel{display:none}
+.c-stage-desc{display:none}
+.caps[data-variant="stage"] .c-stage-desc{display:block;position:absolute;left:48px;top:950px;width:1344px;margin:0;text-align:center;
+  font-family:var(--f-body);font-size:15px;line-height:1.6;color:var(--graphite);animation:r-scene-in .5s cubic-bezier(.16,1,.3,1)}
+.caps[data-variant="stage"] .c-stage-desc span{display:inline-block;max-width:560px}
+
+/* ---------- SLIDES: big visual left (cols 1–4), active capability right (cols 5–6) with prev / next ---------- */
+.caps[data-variant="slides"]{height:1000px}
+.caps[data-variant="slides"] .c-visual{left:48px;top:330px;width:896px;height:520px}
+.caps[data-variant="slides"] .c-providers{left:139px;top:58px}
+.caps[data-variant="slides"] .c-entry{left:525px;top:168px}
+.caps[data-variant="slides"] .c-glow{left:330px;top:40px}
+.caps[data-variant="slides"] .c-list{top:330px;left:976px;width:416px;border:0}
+.caps[data-variant="slides"] .c-item{display:none;padding:0;border:0}
+.caps[data-variant="slides"] .c-item.is-active{display:block;animation:r-scene-in .6s cubic-bezier(.16,1,.3,1)}
+.caps[data-variant="slides"] .c-item::before,.caps[data-variant="slides"] .c-plus{display:none}
+.caps[data-variant="slides"] .c-name{font-size:var(--fs-feature);line-height:1.05;letter-spacing:-.04em;color:var(--ink)}
+.caps[data-variant="slides"] .c-desc{width:auto;padding:18px 0 0}
+.c-slides-nav{display:none}
+.caps[data-variant="slides"] .c-slides-nav{display:flex;position:absolute;left:976px;top:794px;width:416px;align-items:center;gap:10px}
+.c-slides-nav button.arrow{width:56px;height:56px;border-radius:50%;border:1px solid var(--mist);background:rgba(255,255,255,.6);color:var(--ink);
+  font:400 20px/1 var(--f-body);cursor:pointer;transition:background-color .3s,border-color .3s,transform .3s cubic-bezier(.2,.8,.2,1)}
+.c-slides-nav button.arrow:hover{background:var(--ink);border-color:var(--ink);color:var(--frost)}
+.c-slides-nav button.arrow:active{transform:scale(.94)}
+.c-slides-nav .bars{display:flex;gap:6px;margin-left:auto}
+.c-slides-nav .bars i{display:block;width:20px;height:3px;border-radius:2px;background:var(--ink);opacity:.15;transition:width .5s cubic-bezier(.16,1,.3,1),opacity .3s,background-color .3s}
+.c-slides-nav .bars i.on{width:48px;opacity:1;background:var(--orange)}
+}
+
+@media (prefers-reduced-motion:reduce){
+  .caps[data-variant="slides"] .c-item.is-active,.caps[data-variant="stage"] .c-stage-desc{animation:none}
+  .caps[data-variant="stage"] .c-trigger,.c-slides-nav button.arrow,.c-slides-nav .bars i{transition:none}
+}
+
+/* variant-only controls are hidden unless their desktop variant is active (rules above are more specific) */
+.c-stage-desc,.c-slides-nav,.c-scroll-hint{display:none}

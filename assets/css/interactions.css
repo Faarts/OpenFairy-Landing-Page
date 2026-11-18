@@ -1,0 +1,27 @@
+/* ==========================================================================
+   Small interactions for sections 02–05 (driven by interactions.js; mouse / pen only, off for reduced motion)
+   ========================================================================== */
+/* cursor spotlight on glass surfaces */
+.spot{position:absolute;inset:0;z-index:3;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .45s;
+  background:radial-gradient(var(--spot-r,240px) circle at var(--mx,50%) var(--my,50%),rgba(247,127,6,.09),rgba(247,127,6,0) 70%),
+             radial-gradient(calc(var(--spot-r,240px) * .6) circle at var(--mx,50%) var(--my,50%),rgba(255,255,255,.35),rgba(255,255,255,0) 70%)}
+.has-spot:hover>.spot{opacity:1}
+.c-visual .spot{--spot-r:420px;z-index:4}
+
+/* section 02 · metric cards tilt toward the cursor */
+.m-card{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg));
+  transition:flex-basis .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),padding .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1),background-color .5s,transform .5s cubic-bezier(.16,1,.3,1)}
+
+/* section 03 · the wing leans toward the cursor; provider logos lift */
+.s-figure img{transform:translate(calc(-50% + var(--gx,0px)),calc(-50% + 50px + var(--py,0px) + var(--gy,0px))) rotate(var(--gr,0deg));
+  transition:transform .9s cubic-bezier(.16,1,.3,1)}
+.s-providers img{transition:transform .35s cubic-bezier(.2,.8,.2,1),filter .35s}
+.s-providers img:hover{transform:translateY(-3px) scale(1.06)}
+
+/* section 04 · hovering a capability previews its scene */
+.c-visual.peek{box-shadow:0 30px 60px -30px rgba(26,23,20,.25),0 0 0 1px rgba(247,127,6,.35)}
+
+@media (prefers-reduced-motion:reduce){
+  .spot{display:none}
+  .m-card,.s-figure img{transform:none!important}
+}

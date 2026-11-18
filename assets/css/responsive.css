@@ -1,0 +1,236 @@
+/* ==========================================================================
+   Responsive
+   ≥ 1200px  desktop: the 1440px design canvas scales with the viewport (renderer.js fit()) — untouched here.
+   < 1200px  compact: fluid layout (html.is-compact is also set by fit()).
+   <  760px  phone.
+   Keep 1200px in sync with BREAKPOINT in assets/js/config.js.
+
+   Compact type scale (fluid between phone and tablet)
+     --t-h1       hero headline            40 → 76
+     --t-h2       section titles           34 → 56
+     --t-h3       card / list titles       18 → 21
+     --t-lead     lead paragraphs          17 → 19
+     --t-body     body copy                15 → 16
+   Spacing
+     --g          page gutter              20 → 48
+     --sec        space between sections   72 → 112
+     --stack      title → content          28 → 44
+   ========================================================================== */
+.wing-slot{display:none}
+
+@media (max-width:1199.98px){
+  :root{
+    --g:clamp(20px,5vw,48px);
+    --sec:clamp(72px,10vw,112px);
+    --stack:clamp(28px,4vw,44px);
+    --t-h1:clamp(40px,10.2vw,76px);
+    --t-h2:clamp(34px,6.4vw,56px);
+    --t-h3:clamp(18px,2.2vw,21px);
+    --t-lead:clamp(17px,2vw,19px);
+    --t-body:clamp(15px,1.6vw,16px);
+  }
+  #page{width:100%}
+  #metrics,#brand,#brand-diagram,#capabilities,#use-cases,#membership,#get-started,.foot{width:auto}   /* ids: ".brand" is also a span class in titles */
+
+  /* shared heading treatment */
+  .m-title,.b-title,.c-title,.u-title,.mem-title,.gs-title{white-space:normal;text-wrap:balance}
+  .m-title,.c-title,.u-title,.mem-title,.gs-title{font-size:var(--t-h2);line-height:1.02;letter-spacing:-.045em}
+
+  /* ================= hero ================= */
+  #art{width:100%;height:auto;min-height:100svh;padding:16px var(--g) var(--sec);
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:32px;align-content:start;
+    grid-template-areas:"nav nav" "head head" "slot slot" "hint hint" "cta info"}
+  #gl{width:100%;height:100%}
+  #art .nav{grid-area:nav;position:relative;left:auto;right:auto;top:auto;height:44px}
+  #art .head{grid-area:head;position:relative;left:auto;top:auto;margin-top:clamp(40px,7vw,72px)}
+  #art h1{font-size:var(--t-h1);line-height:.96}
+  #art .wing-slot{grid-area:slot;display:block;height:clamp(280px,56vw,480px)}
+  #art .hint{grid-area:hint;position:relative;left:auto;bottom:auto;justify-self:center;margin-top:-20px;transform:translateY(16px)}
+  #art.ready .hint{transform:none}
+  #art .cta{grid-area:cta;position:relative;left:auto;bottom:auto;align-self:end;margin-top:var(--stack);gap:20px}
+  #art .cta p.sub{font-size:var(--t-lead)}
+  #art .cta p{font-size:var(--t-body);max-width:520px}
+  #art .info{grid-area:info;position:relative;right:auto;top:auto;width:auto;align-self:end;margin-top:var(--stack)}
+  #art .callout,#art .side{display:none}
+  #pre{position:fixed}
+
+  /* ================= 02 · metrics ================= */
+  #metrics{height:auto;padding:var(--sec) var(--g) 0;overflow:hidden}
+  /* the glow fades out inside its own box, so keep the box inside the section (no hard cut-off) */
+  .m-glow{left:50%;top:auto;bottom:24px;width:min(800px,130%);height:auto;transform:translateX(-50%)}
+  .m-wrap{position:relative;left:auto;top:auto;width:auto;padding-bottom:8px}
+  .m-head{align-items:flex-end;gap:32px}
+  .m-sub{margin:0;width:auto;max-width:340px;font-size:var(--t-body)}
+  /* cards: one featured (weekly tokens) + four; inside each card the number leads, icon sits top-right */
+  .m-cards{margin-top:var(--stack);height:auto;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;align-items:stretch}
+  .m-card,.m-card.is-active{display:grid;grid-template-columns:1fr auto;grid-template-rows:auto 1fr auto;
+    height:auto;min-height:200px;padding:18px;border-radius:20px;gap:0;cursor:default}
+  .m-card[data-i="2"]{grid-column:1/-1;order:-1;min-height:220px;padding:22px}
+  .m-top{grid-column:1;grid-row:1;justify-content:flex-start;gap:12px}
+  .m-icon{grid-column:2;grid-row:1;align-self:start}
+  .m-val,.m-card.is-active .m-val{grid-column:1/-1;grid-row:3;gap:6px}
+  .m-num .n,.m-card.is-active .m-num .n{font-size:clamp(30px,4.4vw,42px)}
+  .m-card[data-i="2"] .m-num .n{font-size:clamp(48px,8vw,72px)}
+  .m-num .u,.m-card.is-active .m-num .u{font-size:clamp(18px,2.4vw,24px)}
+  .m-lbl,.m-card.is-active .m-lbl{height:auto}
+  .m-progress{display:none}   /* desktop carousel affordance; the compact grid shows every card */
+
+  /* ================= 03 · brand ================= */
+  #brand-diagram{height:auto;padding:var(--sec) var(--g) 0;grid-template-columns:minmax(0,1fr);row-gap:var(--stack)}
+  .b-title{font-size:var(--t-h2)}
+  .b-lead{margin-top:20px;max-width:620px;font-size:var(--t-lead)}
+  .b-cols{margin-top:28px;padding-top:20px;max-width:720px}
+  .b-body{font-size:var(--t-body)}
+  .b-diagram{min-height:400px}
+
+  /* ================= 03 · statement (version B) ================= */
+  section.statement{padding:var(--sec) var(--g) 0}
+  .s-grid{left:var(--g);right:var(--g);background-size:calc(100% / 4) 100%}
+  .s-title{margin-top:0;font-size:clamp(40px,8.6vw,84px)}
+  .s-ln{white-space:normal}
+  .s-l2{padding-left:25%}
+  .s-l3{padding-left:12.5%}
+  .s-bottom{margin-top:clamp(56px,9vw,96px);grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:24px}
+  .s-figure{height:clamp(260px,40vw,400px)}
+  .s-figure img{width:clamp(720px,110vw,1200px)}
+  .s-copy{padding:0}
+  .s-lead{font-size:var(--t-lead);margin-bottom:32px}
+  .s-rows li{padding:18px 0}
+  .s-providers img{height:14px}
+  .s-rows .s-providers{grid-template-columns:repeat(3,max-content);gap:14px 24px}
+  .s-rows p{font-size:var(--t-body)}
+
+  /* ================= 04 · capabilities ================= */
+  #capabilities{height:auto;padding:var(--sec) var(--g) 0}
+  .caps::before{left:var(--g);right:var(--g);background-size:25% 100%}
+  .c-title{position:static}
+  .c-list{position:static;width:auto;max-width:720px;margin-top:var(--stack)}
+  .c-item{padding:20px 0}
+  .c-item.is-active{padding-bottom:24px}
+  .c-item-title .c-trigger{gap:16px}
+  .c-name,.c-item.is-active .c-name{width:auto;font-size:clamp(20px,3vw,26px);line-height:1.2;letter-spacing:-.035em}
+  .c-desc{width:auto;max-width:560px;padding:12px 0 4px;font-size:var(--t-body)}
+  .c-visual{position:relative;left:auto;top:auto;width:auto;height:auto;margin-top:var(--stack);padding:clamp(14px,3vw,28px);border-radius:24px}
+  .c-glow{left:auto;right:-220px;top:auto;bottom:-240px}
+  .c-scene{position:relative;inset:auto;display:none;transform:none;transition:none}
+  .c-visual[data-step="1"] [data-scene="1"],.c-visual[data-step="2"] [data-scene="2"],
+  .c-visual[data-step="3"] [data-scene="3"],.c-visual[data-step="4"] [data-scene="4"]{display:flex;animation:r-scene-in .6s cubic-bezier(.16,1,.3,1)}
+  [data-scene="1"]{flex-wrap:wrap;gap:14px;align-items:flex-start}
+  .c-providers{position:relative;left:auto;top:auto;width:auto;flex:1 1 320px}
+  .c-entry{position:relative;left:auto;top:auto;width:auto;flex:1 1 220px}
+  .c-console{width:100%;max-width:640px}
+  .c-code{overflow-x:auto}
+  .c-route-model{overflow:hidden;text-overflow:ellipsis}
+
+  /* ================= 05 · use cases ================= */
+  #use-cases{padding:var(--sec) var(--g) 0}
+  .uses::before{left:var(--g);right:var(--g);background-size:25% 100%}
+  .u-rail{display:none}
+  .u-cards{margin-top:var(--stack);grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+  .u-card{height:auto;min-height:0}
+  .u-name{margin-top:24px;font-size:var(--t-h3);line-height:1.2}
+  .u-desc{font-size:var(--t-body)}
+
+  /* ================= 06 · membership ================= */
+  #membership{padding:var(--sec) var(--g) 0}
+  .mem::before{left:var(--g);right:var(--g);background-size:25% 100%}
+  .mem-lead,.gs-lead{font-size:var(--t-lead)}
+  .mem-stage{height:auto;margin-top:var(--stack);display:flex;flex-flow:row wrap;justify-content:center;align-items:center;gap:10px}
+  .mem-pass{position:relative;left:auto;top:auto;width:min(460px,100%);height:auto;min-height:260px;margin:0;gap:28px;order:-1}
+  .mem-addr-v{font-size:clamp(26px,4.4vw,36px)}
+  .mem-stage .mem-perk{position:relative;inset:auto;width:auto;height:auto;flex-direction:row;gap:10px;padding:10px 14px;border-radius:99px;font-size:11px;transform:none}
+  .mem-stage .mem-perk img{width:20px;height:20px}
+  .mem-perk .glyph{font-size:16px;line-height:20px}
+  .mem-pass{flex:0 0 100%;max-width:460px;margin-bottom:10px}
+  .mem-ribbon{height:clamp(160px,24vw,220px);margin:var(--stack) calc(var(--g) * -1) 0}
+  .mem-band{height:clamp(56px,8vw,76px)}
+  .mem-track span{font-size:clamp(22px,3.6vw,32px)}
+
+  /* ================= 07 · get started ================= */
+  #get-started{padding:var(--sec) var(--g) 0}
+  .gs-panel{grid-template-columns:minmax(0,1fr);gap:var(--stack);min-height:0;padding:clamp(32px,6vw,64px) clamp(20px,5vw,56px) 0;border-radius:24px}
+  .gs-copy{padding-bottom:0}
+  .gs-panel::before{background-size:25% 100%}
+  .gs-console{max-width:620px;width:100%}
+  .gs-code{overflow-x:auto}
+
+  /* ================= footer ================= */
+  .foot{margin-top:var(--sec);padding:56px var(--g) 28px}
+  .foot-grid{grid-template-columns:1.6fr 1fr 1fr;column-gap:24px;row-gap:40px}
+  .foot-tag{font-size:var(--t-lead)}
+  .foot-desc{font-size:var(--t-body)}
+  .foot-base{flex-wrap:wrap;gap:12px;margin-top:48px}
+}
+@keyframes r-scene-in{from{opacity:0;transform:translateY(10px)}}
+
+/* ---------- small tablet: titles get the full width ---------- */
+@media (max-width:959.98px){
+  .m-head{flex-direction:column;align-items:flex-start;gap:16px}
+  .m-sub{max-width:440px}
+}
+
+/* ---------- phone ---------- */
+@media (max-width:759.98px){
+  /* hero: single column */
+  #art{grid-template-columns:minmax(0,1fr);grid-template-areas:"nav" "head" "slot" "hint" "cta" "info"}
+  #art .nav .links{display:none}
+  #art .nav .btn{padding:11px 16px}
+  #art .hint{font-size:10px}
+
+  /* metrics: 2-up cards */
+  .m-cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .m-card,.m-card.is-active{min-height:168px;padding:16px}
+  .m-card .m-icon img{width:32px;height:32px}
+  .m-lbl{font-size:11px}
+
+  /* brand: body paragraphs stack; diagram runs top → bottom (wires switch to vertical in brand.js) */
+  .b-cols{grid-template-columns:1fr;gap:20px}
+  .b-diagram{display:flex;flex-direction:column;align-items:center;gap:56px;min-height:0;padding:28px 18px}
+  .b-src,.b-out{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:8px}
+  .b-src .b-cap{flex:0 0 100%;text-align:center}
+  .b-hub .b-cap,.b-out .b-cap{display:none}
+  .b-diagram{gap:44px}
+  .b-node{height:32px;padding:0 12px;font-size:12.5px}
+  .b-node img{height:12px}
+
+  .caps::before{background-size:50% 100%}
+  /* statement: single column, 2-column grid lines, no line indents */
+  .s-grid{background-size:50% 100%}
+  .s-l2,.s-l3{padding-left:0}
+  .s-bottom{grid-template-columns:1fr;row-gap:28px}
+  .s-figure{height:300px}
+  .s-figure img{width:660px;transform:translate(-50%,calc(-50% + 34px + var(--py,0px)))}
+
+  /* capabilities */
+  .c-item-title .c-trigger{gap:14px}
+  .c-providers{padding:16px 16px 8px}
+  .c-console{padding:12px;border-radius:20px}
+  .c-code{font-size:11px;padding:12px}
+  .c-route{gap:10px;padding:10px}
+  .c-route-bar{width:40px}
+  .c-log{font-size:11px;padding:12px}
+  .c-log-rows li{grid-template-columns:64px 32px 1fr auto;column-gap:4px}
+
+  .uses::before{background-size:50% 100%}
+  /* use cases: single column */
+  .u-cards{grid-template-columns:1fr}
+
+  /* membership / get started */
+  .mem::before,.gs-panel::before{background-size:50% 100%}
+  .gs-actions .btn{flex:1 1 auto;justify-content:center}
+  .gs-row{padding:14px 12px}
+  .gs-code{font-size:11.5px;padding:12px}
+  .mem-pass{padding:22px 20px}
+
+  /* footer: brand on top, link columns side by side */
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .foot-brand{grid-column:1/-1}
+}
+
+/* ---------- touch screens: no custom cursor ---------- */
+@media (hover:none){
+  #cur{display:none}
+  #art{cursor:auto}
+  .btn{cursor:pointer}
+  .m-card{cursor:default}
+}

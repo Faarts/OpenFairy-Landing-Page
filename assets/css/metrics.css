@@ -4,22 +4,17 @@
    ========================================================================== */
 .metrics{position:relative;width:1440px;height:900px;overflow:visible}
 
-/* background layers: 3D wing render (sits behind the active glass card), shards, brand glow */
-.m-render{position:absolute;left:121px;top:223px;width:1195px;height:747px;display:block;pointer-events:none;user-select:none}
-.m-shards{position:absolute;inset:0;pointer-events:none}
-.m-shard{position:absolute;display:block;border-radius:2px;transform-origin:50% 50%}
-.m-shard.light{background:rgba(255,255,255,.95);box-shadow:0 2px 6px 0 rgba(26,23,20,.12)}
-.m-shard.dark{background:rgba(51,46,43,.75)}
+/* background: a single soft brand glow behind the cards */
 .m-glow{position:absolute;left:320px;top:300px;width:800px;height:500px;display:block;pointer-events:none}
 
 /* content */
 .m-wrap{position:absolute;left:48px;top:96px;width:1344px}
 .m-head{display:flex;justify-content:space-between;align-items:flex-start}
-.m-title{margin:0;font-family:var(--f-body);font-weight:500;font-size:64px;line-height:1;letter-spacing:-.05em;color:var(--ink)}
+.m-title{margin:0;font-family:var(--f-display);font-weight:400;font-size:var(--fs-h2);line-height:1;letter-spacing:-.055em;color:var(--ink)}
 .m-title .ln{display:block}
 .m-title .sec{color:var(--graphite)}
 .m-title .brand{color:var(--ember-lo)}
-.m-sub{margin:110px 0 0;width:340px;font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--graphite)}
+.m-sub{margin:90px 0 0;width:340px;font-family:var(--f-body);font-size:var(--fs-body);line-height:1.6;color:var(--graphite)}
 
 /* cards row: 4 × 238 + 1 × 328 + 4 × 16 gap = 1344 */
 .m-cards{margin-top:80px;height:404px;display:flex;gap:16px;align-items:center}

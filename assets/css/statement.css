@@ -1,0 +1,47 @@
+/* ==========================================================================
+   Section 03 · version B — editorial statement (light, same frost background as the rest of the page)
+   Inspired by santalarch.com: visible column grid, one large regular-weight statement
+   staggered across columns whose words fill in as you scroll, small copy in hairline rows.
+   6 columns over the 1344px content width → 224px per column.
+   ========================================================================== */
+section.statement{position:relative;width:1440px;padding:44px 48px 150px;background:var(--frost);color:var(--ink);overflow:hidden;
+  --col:224px;--line:rgba(26,23,20,.07)}
+
+/* column grid (hairlines) */
+.s-grid{position:absolute;top:0;bottom:0;left:48px;right:48px;pointer-events:none;
+  background:linear-gradient(to right,var(--line) 1px,transparent 1px) 0 0/var(--col) 100% repeat-x;border-right:1px solid var(--line)}
+
+
+/* statement: three lines indented to column lines; words fill from dim to solid as you scroll (statement.js) */
+.s-title{position:relative;margin:120px 0 0;font-family:var(--f-display);font-weight:400;font-size:var(--fs-display);line-height:.98;letter-spacing:-.055em;color:var(--ink)}
+.s-ln{display:block;white-space:nowrap}
+.s-l2{padding-left:calc(var(--col)*2)}
+.s-l3{padding-left:var(--col)}
+.s-title .w{color:rgba(26,23,20,.12);transition:color .5s}
+.s-title .w.lit{color:var(--ink)}
+.s-title .w.hl.lit{color:var(--ember-lo)}
+
+/* bottom: wing render (cols 1–3) + copy (cols 4–6) */
+.s-bottom{position:relative;margin-top:130px;display:grid;grid-template-columns:calc(var(--col)*3) calc(var(--col)*3);align-items:start}
+.s-figure{position:relative;margin:0;height:500px;overflow:hidden}
+.s-figure::before{content:"";position:absolute;left:50%;top:50%;width:520px;height:380px;transform:translate(-50%,-50%);
+  background:radial-gradient(closest-side,rgba(247,127,6,.16),rgba(247,127,6,0))}
+.s-figure img{position:absolute;left:50%;top:50%;width:1300px;height:auto;max-width:none;
+  /* the wing sits ~40px above the render's centre; +50px recentres it in the frame */
+  transform:translate(-50%,calc(-50% + 50px + var(--py,0px)));will-change:transform}
+.s-copy{padding:0 10px 0 10px}
+.s-lead{margin:0 0 48px;max-width:420px;font-family:var(--f-body);font-weight:500;font-size:var(--fs-lead);line-height:1.35;letter-spacing:-.02em;color:var(--ink)}
+.s-rows{margin:0;padding:0;list-style:none;border-bottom:1px solid var(--mist)}
+.s-rows li{padding:22px 0;border-top:1px solid var(--mist)}
+.s-rows p{margin:0;max-width:460px;font-family:var(--f-body);font-size:var(--fs-body);line-height:1.6;color:var(--graphite)}
+.s-rows .s-providers{display:grid;grid-template-columns:repeat(4,max-content);align-items:center;gap:16px 36px;max-width:none}
+.s-providers img{display:block;height:16px;width:auto}
+
+/* reveal (bottom block) */
+.statement .s-bottom{opacity:0;transform:translateY(28px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}
+.statement .s-bottom.in-view{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .s-title .w{transition:none}
+  .statement .s-bottom{transition:none}
+}

@@ -106,6 +106,12 @@ if(section){
   });
 
   open(0);
+  // used by capabilities-variants.js (layout explorations)
+  section.capsApi={
+    open(i){auto=false;clearTimeout(timer);list.classList.remove('is-auto');open(i);},
+    get active(){return active;},
+    stopAuto(){auto=false;clearTimeout(timer);list.classList.remove('is-auto');},
+  };
   new IntersectionObserver(([e])=>{
     visible=e.isIntersecting;
     schedule(); runScene();
