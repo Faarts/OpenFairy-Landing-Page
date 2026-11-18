@@ -7,7 +7,8 @@ Sections so far:
 2. **Metrics** — "Connections Grow. Intelligence Flows." glass metric cards (Figma frame `89:951`)
 3. **Brand & Product** — "Turn Model Capabilities into Intelligence Within Reach." (Figma frame `82:2`)
 4. **Core Capabilities** — "One Entry Point. More Possibilities." (Figma frame `84:2`)
-5. **Footer** — layout adapted from hanusek.com (brand + tagline, Product / Community link columns, mono base row)
+5. **Use cases** — "From Your First AI Feature to Continuously Running Agents" (no Figma frame; built from the page's components)
+6. **Footer** — layout adapted from hanusek.com (brand + tagline, Product / Community link columns, mono base row)
 
 ## Structure
 
@@ -21,6 +22,7 @@ assets/
     cursor.css              Custom cursor (ring, hold progress, label)
     preloader.css           Loading screen
     metrics.css             Section 02 · Metrics (cards, progress, background layers)
+    usecases.css            Section 05 · Use cases (progress rail + 4 cards with mini previews)
     footer.css              Footer
     capabilities.css        Section 04 · Core Capabilities (list + unified-access visual)
     brand.css               Section 03 · Brand & Product (headline with inline provider stack + wing tile)
@@ -39,6 +41,7 @@ assets/
     metrics.js              Section 02: active card (hover/click/autoplay), count-up, scroll reveal
     capabilities.js         Section 04: capability accordion (autoplay + click) driving 4 visual scenes,
                             each with a live loop (provider badge · SDK model cycle · router · request log)
+    usecases.js             Section 05: scroll-linked progress rail, card hover → rail node, preview loops
     reveal.js               Generic scroll reveal — adds .in-view to [data-reveal] sections; footer year
   images/
     logo/                   OpenFairy logos (horizontal / icon, light / dark)

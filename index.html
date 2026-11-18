@@ -348,8 +348,12 @@ client.chat.completions.<span class="fn">create</span>({
     <li class="u-card" data-n="3">
       <span class="u-idx">03</span>
       <div class="u-viz u-cfg" aria-hidden="true"><pre><span class="cm">// custom API provider</span>
-<span class="k">"apiBase"</span>: <span class="str">"api.openfairy.ai/v1"</span>,
-<span class="k">"model"</span>: <span class="str" data-cycle="deepseek-v3|claude-sonnet|qwen-max|gpt-4.1">"deepseek-v3"</span><i class="u-caret"></i></pre></div>
+{
+  <span class="k">"provider"</span>: <span class="str">"openai-compatible"</span>,
+  <span class="k">"apiBase"</span>: <span class="str">"api.openfairy.ai/v1"</span>,
+  <span class="k">"apiKey"</span>: <span class="str">"$OPENFAIRY_API_KEY"</span>,
+  <span class="k">"model"</span>: <span class="str" data-cycle="deepseek-v3|claude-sonnet|qwen-max|gpt-4.1">"deepseek-v3"</span><i class="u-caret"></i>
+}</pre></div>
       <h3 class="u-name">AI Coding and Developer Tools</h3>
       <p class="u-desc">Configure model services in tools that support custom APIs, with the flexibility to choose models for different development needs.</p>
     </li>
