@@ -1,0 +1,151 @@
+/* ==========================================================================
+   Section 04 · Core Capabilities — "One Entry Point. More Possibilities."
+   Figma: Open Fairy UIUX › Section 04 · Core Capabilities (frame 84:2)
+   ========================================================================== */
+.caps{position:relative;width:1440px;height:981px}
+
+/* title */
+.c-title{position:absolute;left:48px;top:169px;margin:0;font-family:var(--f-body);font-weight:500;font-size:72px;line-height:1;letter-spacing:-.05em;color:var(--ink);white-space:nowrap}
+.c-title .ln{display:block}
+.c-title .sec{color:var(--graphite)}
+.c-title .brand-c{color:var(--ember-lo)}
+
+/* capability list — accordion (one item open at a time, see capabilities.js) */
+.c-list{position:absolute;left:48px;top:346px;width:552px;margin:0;padding:0;list-style:none;border-bottom:1px solid var(--mist)}
+.c-item{position:relative;padding:26px 0;border-top:1px solid var(--mist)}
+/* active top rule: solid ink; while autoplaying it fills left→right as a timer */
+.c-item::before{content:"";position:absolute;left:0;top:-1px;height:1px;width:0;background:var(--ink)}
+.c-item.is-active::before{width:100%}
+.c-list.is-auto .c-item.is-active::before{animation:c-fill var(--c-dur,6s) linear both}
+@keyframes c-fill{from{width:0}to{width:100%}}
+.c-item-title{margin:0}
+.c-trigger{display:flex;align-items:baseline;gap:20px;width:100%;margin:0;padding:0;border:0;background:none;font:inherit;color:inherit;text-align:left;cursor:pointer}
+.c-trigger:focus-visible{outline:2px solid var(--orange);outline-offset:6px;border-radius:4px}
+.c-idx{font-family:var(--f-mono);font-weight:600;font-size:12px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);transition:color .4s}
+.c-name{width:490px;font-family:var(--f-body);font-weight:500;font-size:28px;line-height:1.1;letter-spacing:-.035em;color:var(--graphite);
+  transition:font-size .6s cubic-bezier(.16,1,.3,1),color .4s}
+.c-trigger:hover .c-name{color:var(--ink)}
+.c-item.is-active .c-idx{color:var(--ember-lo)}
+.c-item.is-active .c-name{font-size:34px;color:var(--ink)}
+.c-item.is-active .c-trigger{cursor:default}
+/* collapsible description (grid 0fr → 1fr) */
+.c-panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .6s cubic-bezier(.16,1,.3,1)}
+.c-panel-in{overflow:hidden;min-height:0}
+.c-item.is-active .c-panel{grid-template-rows:1fr}
+.c-desc{margin:0;padding:18px 0 6px 38px;width:508px;font-family:var(--f-body);font-size:17px;line-height:1.6;color:var(--graphite);
+  opacity:0;transition:opacity .4s}
+.c-item.is-active .c-desc{opacity:1;transition-delay:.15s}
+
+/* visual · unified access (glass panel)
+   note: children are positioned from the padding box, so Figma x/y values are offset by the 1px border */
+.c-visual{position:absolute;left:656px;top:285px;width:736px;height:600px;border-radius:28px;overflow:hidden;
+  border:1px solid var(--glass-edge);background:var(--glass);
+  box-shadow:0 30px 60px -30px rgba(26,23,20,.25)}
+.c-visual::before{content:"";position:absolute;inset:-1px;border-radius:inherit;background:url(../images/capabilities/panel-texture.png) center/cover no-repeat;opacity:.7;
+  backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px)}
+.c-visual::after{content:"";position:absolute;inset:0;border-radius:inherit;box-shadow:inset 0 1px 0 rgba(255,255,255,.9);pointer-events:none}
+.c-glow{position:absolute;left:268px;top:188px;width:640px;height:540px;display:block;pointer-events:none}
+
+.c-card{position:absolute;z-index:1;border-radius:20px;border:1px solid var(--glass-edge);background:rgba(255,255,255,.82);
+  backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+  box-shadow:0 30px 60px -30px rgba(26,23,20,.25),inset 0 1px 0 rgba(255,255,255,.9)}
+.c-head{display:flex;justify-content:space-between;font-family:var(--f-mono);font-weight:600;font-size:12px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);white-space:nowrap}
+.c-head .c-strong{color:var(--ink)}
+
+/* card · providers */
+.c-providers{left:38px;top:97.5px;width:400px;padding:20px 24px 12px}
+.c-providers .c-head{padding-bottom:14px}
+.c-rows{margin:0;padding:0;list-style:none}
+.c-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-top:1px solid var(--mist)}
+.c-logo{display:block;height:17.5px;width:auto}
+.c-status{display:inline-flex;align-items:center;gap:6px;padding:4px 10px;border-radius:99px;background:rgba(26,23,20,.05);
+  font-family:var(--f-mono);font-weight:500;font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);
+  transition:background-color .4s,color .4s}
+.c-status img{display:none}
+.c-row.is-use .c-status{background:rgba(247,127,6,.14);color:var(--ember-lo)}
+.c-row.is-use .c-status img{display:block;animation:c-pulse 1.8s ease-in-out infinite}
+@keyframes c-pulse{50%{opacity:.35}}
+
+/* card · one entry point */
+.c-entry{left:450px;top:207.5px;width:256px;padding:20px 24px 24px;display:flex;flex-direction:column;align-items:center}
+.c-entry .c-head{width:100%;padding-bottom:18px}
+.c-tag{display:inline-block;padding:8px 14px;border-radius:99px;background:var(--glass);border:1px solid var(--mist);
+  font-family:var(--f-mono);font-weight:600;font-size:12px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);white-space:nowrap}
+.c-line{position:relative;display:block;width:1.5px;height:26px;background:var(--ink);overflow:hidden}
+/* request pulse travelling down the route */
+.c-line::after{content:"";position:absolute;left:0;top:-10px;width:100%;height:10px;background:var(--orange);animation:c-flow 2.4s cubic-bezier(.6,0,.4,1) infinite}
+.c-line:nth-of-type(2)::after{animation-delay:.35s}
+.c-line:nth-of-type(3)::after{animation-delay:.7s}
+@keyframes c-flow{0%{top:-10px}45%,100%{top:26px}}
+.c-node{display:block}
+.c-of{display:inline-flex;align-items:center;gap:8px;padding:10px 16px 10px 14px;border-radius:99px;background:var(--night);
+  font-family:var(--f-body);font-weight:500;font-size:15px;line-height:normal;letter-spacing:-.01em;color:var(--frost);white-space:nowrap}
+.c-of img{display:block}
+.c-targets{display:flex;gap:6px}
+
+/* ---- scenes: the visual swaps content with the open capability (data-step on .c-visual) ---- */
+.c-scene{position:absolute;inset:0;z-index:1;opacity:0;visibility:hidden;transform:translateY(18px);
+  transition:opacity .45s,transform .8s cubic-bezier(.16,1,.3,1),visibility 0s linear .8s}
+.c-scene-center{display:flex;align-items:center;justify-content:center}
+.c-visual[data-step="1"] [data-scene="1"],.c-visual[data-step="2"] [data-scene="2"],
+.c-visual[data-step="3"] [data-scene="3"],.c-visual[data-step="4"] [data-scene="4"]{
+  opacity:1;visibility:visible;transform:none;transition:opacity .6s .15s,transform .9s .15s cubic-bezier(.16,1,.3,1),visibility 0s}
+
+/* console — Figma "Glass / Router console" (70:377) */
+.c-console{position:relative;width:557px;padding:16px;border-radius:24px;display:flex;flex-direction:column;gap:10px;
+  border:1px solid var(--glass-edge);
+  background:linear-gradient(161.65deg,rgba(255,255,255,.75) 0%,rgba(255,255,255,.4) 83.333%);
+  backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+  box-shadow:0 30px 60px -30px rgba(26,23,20,.35),inset 0 1px 0 #fff}
+.c-console-head{display:flex;justify-content:space-between;padding:0 4px 2px;font-family:var(--f-code);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite);white-space:nowrap}
+.c-code{margin:0;padding:14px 16px;border-radius:14px;background:var(--night);overflow:hidden;
+  font-family:var(--f-code);font-size:12.5px;line-height:1.7;color:var(--frost);white-space:pre}
+.c-code .cm{color:#8A8178}
+.c-code .fn{color:var(--orange)}
+.c-code .str{color:#FFB46B}
+.c-code .ln-del,.c-code .ln-add{display:inline-block;width:calc(100% + 32px);margin:0 -16px;padding:0 16px}
+.c-code .ln-del{color:#8A8178;text-decoration:line-through;text-decoration-color:rgba(138,129,120,.6)}
+.c-code .ln-del .str{color:#8A8178}
+.c-code .ln-add{background:rgba(247,127,6,.16)}
+.c-code b{font-weight:400;color:var(--orange)}
+.c-code .ln-del b{color:#8A8178}
+.c-chips{display:flex;gap:6px;padding-top:2px}
+.c-tag-hl{background:#FFF4E8;border-color:rgba(247,127,6,.45);color:var(--ember-lo)}
+
+/* route row — Figma component "Route Row" (70:298), Default / Active */
+.c-routes{display:flex;flex-direction:column;gap:6px}
+.c-route{display:flex;align-items:center;gap:12px;height:40px;padding:10px 12px;border-radius:12px;
+  background:rgba(255,255,255,.55);border:1px solid var(--glass-edge);transition:background-color .4s,border-color .4s}
+.c-route-node{display:block;flex:none;width:10px;height:10px;border-radius:3px;background:var(--mist);transition:background-color .4s,box-shadow .4s}
+.c-route-model{flex:1;min-width:0;font-family:var(--f-body);font-size:13.5px;color:var(--ink);white-space:nowrap}
+.c-route-model em{font-style:normal;margin-left:8px;font-family:var(--f-code);font-size:11.5px;color:var(--graphite)}
+.c-route-bar{position:relative;flex:none;width:64px;height:4px;border-radius:2px;background:#ECE9E5;overflow:hidden}
+.c-route-bar i{position:absolute;left:0;top:0;height:4px;width:24px;background:rgba(26,23,20,.25);transition:width .6s cubic-bezier(.16,1,.3,1),background-color .4s}
+.c-route-lat{flex:none;min-width:44px;text-align:right;font-family:var(--f-code);font-size:11.5px;color:var(--graphite);white-space:nowrap}
+.c-route.is-on{background:#FFF4E8;border-color:rgba(247,127,6,.35)}
+.c-route.is-on .c-route-node{background:var(--orange);box-shadow:0 0 0 4px rgba(247,127,6,.2)}
+.c-route.is-on .c-route-bar i{width:59px;background:var(--orange)}
+/* key rows (scene 4) set their usage % inline, which wins over the widths above */
+
+/* request log */
+.c-log{padding:12px 16px 10px;border-radius:14px;background:var(--night);font-family:var(--f-code);font-size:12px;line-height:1.7;color:var(--frost)}
+.c-log-head{display:flex;justify-content:space-between;padding-bottom:6px;font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:#8A8178}
+.c-log-rows{margin:0;padding:0;list-style:none}
+.c-log-rows li{display:grid;grid-template-columns:72px 40px 1fr auto;white-space:nowrap;animation:c-log-in .5s cubic-bezier(.16,1,.3,1)}
+.c-log-rows li>span:first-child,.c-log-rows li>span:last-child{color:#8A8178}
+.c-log-rows .ok{color:#8A8178}
+.c-log-rows .warn{color:#FFB46B}
+@keyframes c-log-in{from{opacity:0;transform:translateY(-6px)}}
+
+/* reveal on scroll (class added by reveal.js) */
+.caps .c-title,.caps .c-list,.caps .c-visual{opacity:0;transform:translateY(28px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}
+.caps .c-list{transition-delay:.12s}
+.caps .c-visual{transition-delay:.2s}
+.caps.in-view .c-title,.caps.in-view .c-list,.caps.in-view .c-visual{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .caps .c-title,.caps .c-list,.caps .c-visual,.c-status,.c-panel,.c-desc,.c-name,.c-scene,.c-route,.c-route-node,.c-route-bar i{transition:none!important}
+  .c-log-rows li{animation:none}
+  .c-line::after,.c-row.is-use .c-status img{animation:none}
+  .c-line::after{display:none}
+}

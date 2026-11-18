@@ -19,7 +19,7 @@ function fit(){
   renderer.setPixelRatio(RENDER?2:Math.min(2,devicePixelRatio*S));
   renderer.setSize(W,H,false);
 }
-addEventListener('resize',fit); new ResizeObserver(fit).observe(document.documentElement); fit();
+addEventListener('resize',fit); const ro=new ResizeObserver(fit); ro.observe(document.documentElement); ro.observe(page); fit();
 
 const scene=new THREE.Scene();
 const Z=1600;

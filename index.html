@@ -6,13 +6,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@300;400;500&family=JetBrains+Mono:wght@400&display=swap">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/nav.css">
 <link rel="stylesheet" href="assets/css/hero.css">
 <link rel="stylesheet" href="assets/css/cursor.css">
 <link rel="stylesheet" href="assets/css/preloader.css">
 <link rel="stylesheet" href="assets/css/metrics.css">
+<link rel="stylesheet" href="assets/css/brand.css">
+<link rel="stylesheet" href="assets/css/capabilities.css">
+<link rel="stylesheet" href="assets/css/usecases.css">
+<link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
 <div id="stage">
@@ -155,11 +159,243 @@
     </div>
   </div>
 </section>
+
+<section id="brand" class="brand" aria-labelledby="brand-title" data-reveal>
+  <h2 id="brand-title" class="b-title">
+    <span class="b-line">
+      <span class="b-text">Turn Model</span>
+      <span class="b-stack" aria-hidden="true" title="OpenAI, Claude, Gemini + DeepSeek, ChatGLM, Qwen, Doubao">
+        <span class="b-chip"><img src="assets/images/brand/openai.svg" alt="" width="34" height="34"></span>
+        <span class="b-chip"><img src="assets/images/brand/claude.svg" alt="" width="34" height="34"></span>
+        <span class="b-chip"><img src="assets/images/brand/gemini.svg" alt="" width="34" height="34"></span>
+        <span class="b-chip more">+4</span>
+      </span>
+    </span>
+    <span class="b-line">
+      <span class="b-text">Capabilities <span class="sec">into</span></span>
+      <span class="b-tile-wrap" aria-hidden="true"><span class="b-tile"><img src="assets/images/brand/wing-tile.webp" alt="" width="112" height="112"></span></span>
+    </span>
+    <span class="b-line"><span class="b-text brand-c">Intelligence</span></span>
+    <span class="b-line"><span class="b-text sec">Within Reach.</span></span>
+  </h2>
+  <p class="b-lead">AI applications and agents need flexible model choices and simpler ways to access them.</p>
+  <p class="b-body b-body-1">OpenFairy connects fragmented model services through one unified entry point, reducing repeated integration and configuration work so developers can focus on their products, workflows, and agents.</p>
+  <p class="b-body b-body-2">The OpenFairy multi-model API platform supports the complete journey from model selection and API integration to everyday usage management.</p>
+</section>
+<section id="capabilities" class="caps" aria-labelledby="caps-title" data-reveal>
+  <h2 id="caps-title" class="c-title"><span class="ln">One Entry Point.</span><span class="ln"><span class="sec">More</span> <span class="brand-c">Possibilities.</span></span></h2>
+
+  <ol class="c-list">
+    <li class="c-item is-active">
+      <h3 class="c-item-title"><button type="button" class="c-trigger" id="cap-t1" aria-expanded="true" aria-controls="cap-p1"><span class="c-idx">01</span><span class="c-name">Multiple Models, Unified Access</span></button></h3>
+      <div class="c-panel" id="cap-p1" role="region" aria-labelledby="cap-t1"><div class="c-panel-in"><p class="c-desc">Connect to different model services through a unified API. Choose the right capabilities for each task while reducing separate integrations.</p></div></div>
+    </li>
+    <li class="c-item">
+      <h3 class="c-item-title"><button type="button" class="c-trigger" id="cap-t2" aria-expanded="false" aria-controls="cap-p2"><span class="c-idx">02</span><span class="c-name">A Familiar Developer Workflow</span></button></h3>
+      <div class="c-panel" id="cap-p2" role="region" aria-labelledby="cap-t2"><div class="c-panel-in"><p class="c-desc">Keep your existing workflow. OpenFairy is compatible with the OpenAI SDK, so moving to a new model is a base URL and model name change, not a rewrite.</p></div></div>
+    </li>
+    <li class="c-item">
+      <h3 class="c-item-title"><button type="button" class="c-trigger" id="cap-t3" aria-expanded="false" aria-controls="cap-p3"><span class="c-idx">03</span><span class="c-name">Flexible Model and Service Routing</span></button></h3>
+      <div class="c-panel" id="cap-p3" role="region" aria-labelledby="cap-t3"><div class="c-panel-in"><p class="c-desc">Route each request by capability, availability, and cost. Switch between models and services as your needs change without touching your integration.</p></div></div>
+    </li>
+    <li class="c-item">
+      <h3 class="c-item-title"><button type="button" class="c-trigger" id="cap-t4" aria-expanded="false" aria-controls="cap-p4"><span class="c-idx">04</span><span class="c-name">Manage Keys, Limits, and Usage Together</span></button></h3>
+      <div class="c-panel" id="cap-p4" role="region" aria-labelledby="cap-t4"><div class="c-panel-in"><p class="c-desc">Create API keys, set limits, and review request logs in one place, so usage across every model and provider stays visible and under control.</p></div></div>
+    </li>
+  </ol>
+
+  <div class="c-visual" data-step="1" aria-label="Unified access: your app connects through OpenFairy to 7 providers">
+    <img class="c-glow" src="assets/images/capabilities/glow.svg" alt="" aria-hidden="true">
+
+    <!-- scene 1 · Multiple models, unified access (Figma state) -->
+    <div class="c-scene" data-scene="1">
+    <div class="c-card c-providers">
+      <div class="c-head"><span>Supported providers</span><span class="c-strong">7 connected</span></div>
+      <ul class="c-rows">
+          <li class="c-row" data-provider="OpenAI">
+            <img class="c-logo" src="assets/images/providers/openai.svg" alt="OpenAI" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+          <li class="c-row is-use" data-provider="Claude">
+            <img class="c-logo" src="assets/images/providers/claude.svg" alt="Claude" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">In use</span></span>
+          </li>
+          <li class="c-row" data-provider="DeepSeek">
+            <img class="c-logo" src="assets/images/providers/deepseek.svg" alt="DeepSeek" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+          <li class="c-row" data-provider="Gemini">
+            <img class="c-logo" src="assets/images/providers/gemini.svg" alt="Gemini" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+          <li class="c-row" data-provider="ChatGLM">
+            <img class="c-logo" src="assets/images/providers/chatglm.svg" alt="ChatGLM" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+          <li class="c-row" data-provider="Qwen">
+            <img class="c-logo" src="assets/images/providers/qwen.svg" alt="Qwen" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+          <li class="c-row" data-provider="Doubao">
+            <img class="c-logo" src="assets/images/providers/doubao.svg" alt="Doubao" height="17.5">
+            <span class="c-status"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6"><span class="c-status-t">Connected</span></span>
+          </li>
+      </ul>
+    </div>
+
+    <div class="c-card c-entry">
+      <div class="c-head">One entry point</div>
+      <span class="c-tag c-app">Your app</span>
+      <i class="c-line"></i>
+      <img class="c-node" src="assets/images/capabilities/node.svg" alt="" width="14" height="14">
+      <i class="c-line"></i>
+      <span class="c-of"><img src="assets/images/capabilities/openfairy-mark-on-dark.svg" alt="" width="16.837" height="18">OpenFairy</span>
+      <i class="c-line"></i>
+      <span class="c-targets"><span class="c-tag">22 models</span><span class="c-tag">7 providers</span></span>
+    </div>
+    </div>
+
+    <!-- scene 2 · A familiar developer workflow -->
+    <div class="c-scene c-scene-center" data-scene="2">
+      <div class="c-console">
+        <div class="c-console-head"><span>{SDK} · OpenAI compatible</span><span>+2 −1</span></div>
+        <pre class="c-code" aria-label="Code sample: the OpenAI SDK pointed at OpenFairy"><span class="cm">// your existing OpenAI SDK code</span>
+const client = new <span class="fn">OpenAI</span>({
+<span class="ln-del"><b>-</b>  baseURL: <span class="str">"https://api.openai.com/v1"</span>,</span>
+<span class="ln-add"><b>+</b>  baseURL: <span class="str">"https://api.openfairy.ai/v1"</span>,</span>
+<span class="ln-add"><b>+</b>  apiKey: process.env.<span class="fn">OPENFAIRY_API_KEY</span>,</span>
+})
+
+client.chat.completions.<span class="fn">create</span>({
+  model: <span class="str" data-cycle="gpt-4.1|claude-sonnet|deepseek-v3|gemini-2.5|qwen-max">"gpt-4.1"</span>,
+  messages,
+})</pre>
+        <div class="c-chips"><span class="c-tag">Same SDK</span><span class="c-tag">Same requests</span><span class="c-tag c-tag-hl">New base URL</span></div>
+      </div>
+    </div>
+
+    <!-- scene 3 · Flexible model and service routing (Figma "Glass / Router console") -->
+    <div class="c-scene c-scene-center" data-scene="3">
+      <div class="c-console">
+        <div class="c-console-head"><span>{ROUTER} · LIVE</span><span class="c-req">REQ_0X8F2A</span></div>
+        <pre class="c-code"><span class="cm">// one endpoint, every model</span>
+client.chat.completions.<span class="fn">create</span>({
+  model: <span class="str c-route-target">"gpt-4.1"</span>,
+  base_url: <span class="str">"api.openfairy.ai/v1"</span>
+})</pre>
+        <div class="c-routes">
+        <div class="c-route"><i class="c-route-node"></i><span class="c-route-model">Claude / claude-sonnet</span><span class="c-route-bar"><i></i></span><span class="c-route-lat">465 ms</span></div>
+        <div class="c-route is-on"><i class="c-route-node"></i><span class="c-route-model">OpenAI / gpt-4.1</span><span class="c-route-bar"><i></i></span><span class="c-route-lat">231 ms</span></div>
+        <div class="c-route"><i class="c-route-node"></i><span class="c-route-model">DeepSeek / deepseek-v3</span><span class="c-route-bar"><i></i></span><span class="c-route-lat">536 ms</span></div>
+        <div class="c-route"><i class="c-route-node"></i><span class="c-route-model">Gemini / gemini-2.5</span><span class="c-route-bar"><i></i></span><span class="c-route-lat">628 ms</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- scene 4 · Manage keys, limits, and usage together -->
+    <div class="c-scene c-scene-center" data-scene="4">
+      <div class="c-console">
+        <div class="c-console-head"><span>{USAGE} · This month</span><span>3 keys</span></div>
+        <div class="c-routes c-keys">
+          <div class="c-route is-on"><i class="c-route-node"></i><span class="c-route-model">production <em>of-••••a91f</em></span><span class="c-route-bar"><i style="width:82%"></i></span><span class="c-route-lat">82%</span></div>
+          <div class="c-route"><i class="c-route-node"></i><span class="c-route-model">agent-worker <em>of-••••7c2e</em></span><span class="c-route-bar"><i style="width:57%"></i></span><span class="c-route-lat">57%</span></div>
+          <div class="c-route"><i class="c-route-node"></i><span class="c-route-model">staging <em>of-••••04bd</em></span><span class="c-route-bar"><i style="width:34%"></i></span><span class="c-route-lat">34%</span></div>
+        </div>
+        <div class="c-log" aria-label="Request log">
+          <div class="c-log-head"><span>Request log</span><span>Limit 1M req / mo</span></div>
+          <ol class="c-log-rows">
+            <li><span>12:04:31</span><span class="ok">200</span><span>openai/gpt-4.1</span><span>231 ms</span></li>
+            <li><span>12:04:30</span><span class="ok">200</span><span>claude/claude-sonnet</span><span>465 ms</span></li>
+            <li><span>12:04:28</span><span class="warn">429</span><span>production · rate limit</span><span>—</span></li>
+            <li><span>12:04:27</span><span class="ok">200</span><span>deepseek/deepseek-v3</span><span>536 ms</span></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="use-cases" class="uses" aria-labelledby="uses-title" data-reveal>
+  <h2 id="uses-title" class="u-title"><span class="ln">From Your First AI Feature</span><span class="ln"><span class="sec">to Continuously</span> <span class="brand-c">Running Agents.</span></span></h2>
+
+  <div class="u-rail" aria-hidden="true">
+    <span class="u-rail-end">First AI feature</span>
+    <span class="u-rail-track"><i class="u-rail-fill"></i><b data-n="1"></b><b data-n="2"></b><b data-n="3"></b><b data-n="4"></b></span>
+    <span class="u-rail-end">Continuously running agents</span>
+  </div>
+
+  <ol class="u-cards">
+    <li class="u-card" data-n="1">
+      <span class="u-idx">01</span>
+      <div class="u-viz u-chat" aria-hidden="true">
+        <span class="u-msg me">Summarize this week’s feedback</span>
+        <span class="u-msg ai"><i></i><i></i><i class="short"></i></span>
+        <span class="u-typing"><i></i><i></i><i></i></span>
+      </div>
+      <h3 class="u-name">AI Application Development</h3>
+      <p class="u-desc">Bring model capabilities to chat tools, content products, research assistants, and AI SaaS applications to move from idea to product faster.</p>
+    </li>
+    <li class="u-card" data-n="2">
+      <span class="u-idx">02</span>
+      <div class="u-viz u-flow" aria-hidden="true">
+        <span class="u-step">Trigger</span><i class="u-link"></i>
+        <span class="u-step">Research</span><i class="u-link"></i>
+        <span class="u-step">Analyze</span><i class="u-link"></i>
+        <span class="u-step on">Act</span>
+        <span class="u-flow-note">Your orchestration · OpenFairy model access</span>
+      </div>
+      <h3 class="u-name">Agents and Automated Workflows</h3>
+      <p class="u-desc">Provide model access for research, analysis, and automation, working alongside developers’ existing task orchestration and execution logic.</p>
+    </li>
+    <li class="u-card" data-n="3">
+      <span class="u-idx">03</span>
+      <div class="u-viz u-cfg" aria-hidden="true"><pre><span class="cm">// custom API provider</span>
+<span class="k">"apiBase"</span>: <span class="str">"api.openfairy.ai/v1"</span>,
+<span class="k">"model"</span>: <span class="str" data-cycle="deepseek-v3|claude-sonnet|qwen-max|gpt-4.1">"deepseek-v3"</span><i class="u-caret"></i></pre></div>
+      <h3 class="u-name">AI Coding and Developer Tools</h3>
+      <p class="u-desc">Configure model services in tools that support custom APIs, with the flexibility to choose models for different development needs.</p>
+    </li>
+    <li class="u-card" data-n="4">
+      <span class="u-idx">04</span>
+      <div class="u-viz u-team" aria-hidden="true">
+        <span class="u-proj"><b>chat-app</b><em>of-••••a91f</em><span class="u-bar"><i style="--w:72%"></i></span></span>
+        <span class="u-proj"><b>research-agent</b><em>of-••••7c2e</em><span class="u-bar"><i style="--w:48%"></i></span></span>
+        <span class="u-proj"><b>internal-tools</b><em>of-••••04bd</em><span class="u-bar"><i style="--w:26%"></i></span></span>
+      </div>
+      <h3 class="u-name">Teams and Multiple Projects</h3>
+      <p class="u-desc">Configure separate API keys and usage limits for different applications, and review request logs centrally to simplify everyday management.</p>
+    </li>
+  </ol>
+</section>
+<footer class="foot" aria-label="Site footer" data-reveal>
+  <div class="foot-grid">
+    <div class="foot-brand">
+      <a class="foot-logo" href="#" aria-label="OpenFairy home"><img src="assets/images/logo/horizontal-dark.svg" alt="OpenFairy"></a>
+      <p class="foot-tag">The Open Intelligence Access Layer for the Agent Economy.</p>
+      <p class="foot-desc">Connecting model services, developers, and AI applications to make intelligence easier to access, use, and manage.</p>
+    </div>
+    <nav class="foot-col" aria-label="Product">
+      <span class="foot-chip">Product</span>
+      <a href="#">Platform</a>
+      <a href="#">Model Catalog</a>
+      <a href="#">Developer Docs</a>
+      <a href="#">Whitepaper</a>
+    </nav>
+    <nav class="foot-col" aria-label="Community">
+      <span class="foot-chip">Community</span>
+      <a href="#" target="_blank" rel="noopener">X <span class="ext" aria-hidden="true">↗</span></a>
+      <a href="#" target="_blank" rel="noopener">Telegram <span class="ext" aria-hidden="true">↗</span></a>
+    </nav>
+  </div>
+  <div class="foot-base"><span>© <span class="foot-year">2026</span> OpenFairy</span><a href="#" class="foot-top">Back to top ↑</a></div>
+</footer>
 </div>
 </div>
 
 <script type="importmap">{"imports":{"three":"./assets/libs/three/three.module.min.js","three/addons/":"./assets/libs/three/addons/"}}</script>
 <script type="module" src="assets/js/main.js"></script>
 <script type="module" src="assets/js/metrics.js"></script>
+<script type="module" src="assets/js/reveal.js"></script>
+<script type="module" src="assets/js/capabilities.js"></script>
+<script type="module" src="assets/js/usecases.js"></script>
 </body>
 </html>

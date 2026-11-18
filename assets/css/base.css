@@ -2,7 +2,7 @@
 :root{
   --frost:#F4F3F1; --sheet:#FFFFFF; --glass:rgba(255,255,255,.52); --glass-edge:rgba(255,255,255,.9);
   --mist:#E6E2DD; --graphite:#6B645D; --ink:#1A1714; --orange:#F77F06; --ember-hi:#FFB463; --ember-lo:#D85C00; --night:#14110F;
-  --f-display:"Inter Tight","Helvetica Neue",Arial,sans-serif; --f-body:"Inter","Helvetica Neue",Arial,sans-serif; --f-mono:"Archivo","Helvetica Neue",Arial,sans-serif;
+  --f-display:"Inter Tight","Helvetica Neue",Arial,sans-serif; --f-body:"Inter","Helvetica Neue",Arial,sans-serif; --f-mono:"Archivo","Helvetica Neue",Arial,sans-serif; --f-code:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
   color-scheme:light;
 }
 *{box-sizing:border-box}
