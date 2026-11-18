@@ -28,8 +28,41 @@ function update(){
   // active link: the last section whose top has passed 40% of the viewport
   const probe=scrollY+innerHeight*.4; let act='top';
   targets.forEach(id=>{ if(id!=='top'&&docY(id)<=probe) act=id; });
-  if(act!==cur){ cur=act; links.forEach(a=>a.classList.toggle('on',a.dataset.to===act&&a.closest('.links'))); }
+  if(act!==cur){ cur=act; links.forEach(a=>a.classList.toggle('on',a.dataset.to===act&&a.closest('.links,.mm-links'))); }
 }
 addEventListener('scroll',update,{passive:true}); addEventListener('resize',update);
 new MutationObserver(update).observe(art,{attributes:true,attributeFilter:['class']});   // hero becomes .ready after the intro
 update();
+
+// ---------- mobile / tablet menu ----------
+const menu=document.getElementById('mmenu'), burgers=[...document.querySelectorAll('.burger')];
+if(menu){
+  let lastFocus=null;
+  const open=()=>{
+    lastFocus=document.activeElement; menu.hidden=false; root.classList.add('menu-open');
+    window.lenis?.stop(); burgers.forEach(b=>b.setAttribute('aria-expanded','true'));
+    requestAnimationFrame(()=>menu.classList.add('open'));
+    menu.querySelector('.mm-close').focus();
+  };
+  const close=(restore=true)=>{
+    if(menu.hidden) return;
+    menu.classList.remove('open'); root.classList.remove('menu-open');
+    window.lenis?.start(); burgers.forEach(b=>b.setAttribute('aria-expanded','false'));
+    setTimeout(()=>{menu.hidden=true;},300);
+    if(restore&&lastFocus) lastFocus.focus();
+  };
+  burgers.forEach(b=>b.addEventListener('click',open));
+  menu.querySelector('.mm-close').addEventListener('click',()=>close());
+  // links: close first, then nav.js's own handler scrolls to the section
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>close(false),{capture:true}));
+  addEventListener('keydown',e=>{
+    if(menu.hidden) return;
+    if(e.key==='Escape') close();
+    if(e.key==='Tab'){ // keep focus inside the dialog
+      const f=[...menu.querySelectorAll('a,button')], first=f[0], last=f[f.length-1];
+      if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}
+      else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}
+    }
+  });
+  matchMedia('(min-width:1200px)').addEventListener('change',e=>{if(e.matches) close(false);});
+}

@@ -32,7 +32,7 @@ assets/
     usecases.css            Section 05 · Use cases (progress rail + 4 cards with mini previews)
     usecases-variants.css   Section 05 layout explorations (rows / bento / carousel)
     usecases-themes.css     Section 05 background band: ?s5bg=night (default) | orange | light
-    join.css                Sections 06 · Membership (member pass, perk tags, marquee ribbons) and 07 · Get Started (CTA card + API console)
+    join.css                Sections 06 · Membership (member pass, perk tags) and 07 · Get Started (CTA card + API console)
     interactions.css        Small interactions for sections 02–05 (spotlight, tilt, wing lean, scene peek)
     footer.css              Footer
     responsive.css          Tablet / phone layout (< 1200px, < 760px) and touch tweaks — loaded last
@@ -62,10 +62,10 @@ assets/
     brand.js                Section 03 (diagram version): draws the diagram wires from node positions, routes a live request
     usecases-variants.js    Section 05 explorations (?s5=…): carousel; pinned stack / split / hscroll
     pin.js                  Scroll pinning for the CSS-scaled desktop page (used instead of position:sticky)
-    join.js                 S6: pass connects on view, perks follow the pointer, ribbons move with scroll · S7: console cycles model → key → request (hover holds a row)
+    join.js                 S6: pass connects on view, perks follow the pointer · S7: console cycles model → key → request (hover holds a row)
     hero-hold.js            Hero → S2 transition (desktop): ?hero=sheet (default — hero pins, wing scatters while the scroll holds, S2 rises over it) | off
     smooth.js               Smooth, weighted wheel scrolling (Lenis); touch stays native, off with reduced motion
-    nav.js                  Floating nav: shown once the page scrolls, links scroll to sections, active section highlighted
+    nav.js                  Floating nav (shown once the page scrolls), section links + active state, and the mobile / tablet menu (< 1200px)
     interactions.js         Spotlight + tilt (S2, S5), wing leans to cursor (S3), hover previews scene (S4) — mouse only
     reveal.js               Generic scroll reveal — adds .in-view to [data-reveal] sections; footer year
   images/
@@ -83,12 +83,12 @@ assets/
 
 On desktop the 1440px canvas scales with the window until `SMAX` (1.2, about 1728px of content, set in `assets/js/config.js`).
 On wider windows it stops growing and the canvas gets wider instead: sections keep their 1440 layout and sit in the centre, while the
-hero scene, the S5 panel rules, the S6 ribbons and the footer rule run edge to edge (`--bleed`). The hero also grows to fill the
+hero scene, the S5 panel rules, the footer rule run edge to edge (`--bleed`). The hero also grows to fill the
 window height, up to `HMAX` (1200 canvas px), with its content kept centred (`--vpad`).
 
 ## Sections 06 & 07
 
-Layout references: agenciex.framer.website (centred tag + title, floating orange tags, tilted marquee ribbons, warm CTA card) and
+Layout references: agenciex.framer.website (centred tag + title, floating orange tags, warm CTA card) and
 artify.framer.wiki (icons floating around a centred headline; split CTA whose product visual bleeds off the card's bottom edge).
 Both use the same tokens as the rest of the page. Button links (`Join OpenFairy`, `Get Started`, `View Developer Docs`) are still `#`.
 

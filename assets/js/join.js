@@ -1,5 +1,5 @@
 // Sections 06 · Membership and 07 · Get Started.
-// - S6: the member pass "connects" once the section is in view; perk tags drift with the pointer; ribbons speed up with scroll.
+// - S6: the member pass "connects" once the section is in view; perk tags drift with the pointer.
 // - S7: the console walks through model → key → request; hovering a row holds it; a soft light follows the pointer.
 // Mouse / pen only for pointer effects; reduced motion shows the finished states without animation.
 const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -30,15 +30,6 @@ if(mem){
       pass.style.setProperty('--rx',(Math.max(-.5,Math.min(.5,-py))*10).toFixed(2)+'deg');
     });
     stage.addEventListener('pointerleave',()=>{perks.forEach(p=>{p.style.removeProperty('--px');p.style.removeProperty('--py');});pass.style.removeProperty('--rx');pass.style.removeProperty('--ry');});
-  }
-
-  // ribbons: scroll nudges the tracks (front with the scroll, back against it)
-  if(!REDUCE){
-    const tracks=[...mem.querySelectorAll('.mem-track')];
-    let raf=0;
-    const upd=()=>{raf=0;const r=mem.getBoundingClientRect();const k=(innerHeight-r.top)*.25;
-      tracks[0].style.setProperty('--shift',(k).toFixed(1)+'px');tracks[1].style.setProperty('--shift',(-k).toFixed(1)+'px');};
-    addEventListener('scroll',()=>{if(!raf) raf=requestAnimationFrame(upd);},{passive:true}); upd();
   }
 }
 

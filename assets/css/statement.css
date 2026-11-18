@@ -23,8 +23,11 @@ section.statement{position:relative;width:1440px;padding:44px 48px 150px;backgro
 
 /* bottom: wing render (cols 1–3) + copy (cols 4–6) */
 .s-bottom{position:relative;margin-top:130px;display:grid;grid-template-columns:calc(var(--col)*3) calc(var(--col)*3);align-items:start}
-.s-figure{position:relative;margin:0;height:500px;overflow:hidden}
-.s-figure::before{content:"";position:absolute;left:50%;top:50%;width:520px;height:380px;transform:translate(-50%,-50%);
+/* clip only sideways (the render is much wider than the frame); vertically the wing may move past the frame
+   with the parallax / pointer lean without being cut flat */
+.s-figure{position:relative;margin:0;height:500px;overflow:hidden;overflow:clip visible}
+/* the glow fades out inside its own box; keep the box inside the frame so it never shows a clipped edge */
+.s-figure::before{content:"";position:absolute;left:50%;top:50%;width:min(520px,94%);height:min(380px,94%);transform:translate(-50%,-50%);
   background:radial-gradient(closest-side,rgba(247,127,6,.16),rgba(247,127,6,0))}
 .s-figure img{position:absolute;left:50%;top:50%;width:1300px;height:auto;max-width:none;
   /* the wing sits ~40px above the render's centre; +50px recentres it in the frame */

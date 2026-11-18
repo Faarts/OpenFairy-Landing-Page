@@ -38,8 +38,26 @@
     </nav>
     <div class="right">
       <a class="btn dark" href="#">Launch Platform <span class="ar">→</span></a>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
     </div>
   </header>
+</div>
+<!-- mobile / tablet menu (below 1200px), opened by the .burger buttons (assets/js/nav.js) -->
+<div id="mmenu" class="mmenu" role="dialog" aria-modal="true" aria-label="Menu" hidden>
+  <div class="mm-top">
+    <a href="#" data-to="top" aria-label="OpenFairy home"><img class="logo" src="assets/images/logo/horizontal-dark.svg" alt="OpenFairy"></a>
+    <button class="mm-close" type="button" aria-label="Close menu"><i></i><i></i></button>
+  </div>
+  <nav class="mm-links" aria-label="Main">
+    <a href="#" data-to="top">Home</a>
+    <a href="#capabilities" data-to="capabilities">Features</a>
+    <a href="#metrics" data-to="metrics">Metrics</a>
+    <a href="#get-started" data-to="get-started">Docs</a>
+  </nav>
+  <div class="mm-foot">
+    <a class="btn primary" href="#">Launch Platform <span class="ar">→</span></a>
+    <div class="mm-social"><a href="#" target="_blank" rel="noopener">X ↗</a><a href="#" target="_blank" rel="noopener">Telegram ↗</a><a href="#">Whitepaper</a></div>
+  </div>
 </div>
 <div id="stage">
 <div id="page">
@@ -53,6 +71,7 @@
     </nav>
     <div class="right">
       <a class="btn dark" href="#">Launch Platform <span class="ar">→</span></a>
+      <button class="burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mmenu"><i></i><i></i></button>
     </div>
   </header>
 
@@ -445,11 +464,6 @@ client.chat.completions.<span class="fn">create</span>({
         <span><b>Updates</b><em class="m-v" data-on="On">Off</em></span>
       </div>
     </div>
-  </div>
-
-  <div class="mem-ribbon" aria-hidden="true">
-    <div class="mem-band back"><div class="mem-track"><span>Models ✦ Agents ✦ Developers ✦ Applications ✦ Models ✦ Agents ✦ Developers ✦ Applications ✦&nbsp;</span><span>Models ✦ Agents ✦ Developers ✦ Applications ✦ Models ✦ Agents ✦ Developers ✦ Applications ✦&nbsp;</span></div></div>
-    <div class="mem-band front"><div class="mem-track"><span>Become a Fairy Member ✦ Community activities ✦ Product updates ✦ More models ✦ More use cases ✦&nbsp;</span><span>Become a Fairy Member ✦ Community activities ✦ Product updates ✦ More models ✦ More use cases ✦&nbsp;</span></div></div>
   </div>
 </section>
 

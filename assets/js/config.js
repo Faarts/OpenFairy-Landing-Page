@@ -5,7 +5,7 @@ export const RENDER=new URLSearchParams(location.search).get('render'); // ?rend
 export const OVR=window.OVR={};                  // debug overrides (OVR.blast, OVR.ry)
 export const BREAKPOINT=1200;                    // below this width the page switches to the fluid (compact) layout
 // wide screens: the canvas stops scaling at SMAX (1440 × 1.2 = 1728px of content); beyond that the canvas
-// gets wider instead — sections stay 1440 and centre, full-bleed layers (hero scene, ribbons, rules) stretch.
+// gets wider instead — sections stay 1440 and centre, full-bleed layers (hero scene, rules) stretch.
 export const SMAX=1.2;
 export const HMAX=1200;                          // the desktop hero grows to the viewport height up to this (canvas px)
 export const COMPACT_MQ=matchMedia(`(max-width:${BREAKPOINT-.02}px)`);

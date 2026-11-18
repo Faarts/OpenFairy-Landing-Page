@@ -1,7 +1,7 @@
 /* ==========================================================================
    Sections 06 · Membership and 07 · Get Started
    Layout language from agenciex.framer.website (centred tag + title, floating
-   orange tags around a hero card, tilted marquee ribbons, warm full-bleed CTA card),
+   orange tags around a hero card, warm full-bleed CTA card),
    plus artify.framer.wiki (floating icons around a centred headline; split CTA card whose
    product visual bleeds off the card edge), restyled with OpenFairy tokens: light frost ground, hairline grid, --fs-* type scale.
    ========================================================================== */
@@ -72,16 +72,6 @@
 .p3{right:250px;top:40px;--rot:6deg}
 .p4{right:320px;top:310px;--rot:-5deg}
 
-/* ribbons */
-.mem-ribbon{position:relative;height:260px;margin:0 -48px}
-.mem-band{position:absolute;left:-80px;right:-80px;top:50%;height:84px;display:flex;align-items:center;overflow:hidden;white-space:nowrap}
-.mem-band.front{transform:translateY(-50%) rotate(-3deg);background:linear-gradient(180deg,var(--ember-hi) -60%,var(--orange) 45%,var(--ember-lo) 160%);
-  box-shadow:0 24px 40px -24px rgba(216,92,0,.6);color:#fff}
-.mem-band.back{transform:translateY(-50%) rotate(2.4deg);background:#fff;border-block:1px solid var(--mist);color:var(--graphite)}
-.mem-track{display:flex;width:max-content;transform:translateX(var(--shift,0px));animation:mem-marq 46s linear infinite}
-.mem-band.back .mem-track{animation-direction:reverse;animation-duration:60s}
-.mem-track span{font-family:var(--f-display);font-weight:400;font-size:var(--fs-feature);line-height:1;letter-spacing:-.04em}
-@keyframes mem-marq{to{translate:-50% 0}}
 
 /* reveal */
 .mem .mem-head>*{opacity:0;transform:translateY(24px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}
@@ -106,11 +96,11 @@
 .gs-panel::after{content:"";position:absolute;z-index:-1;left:var(--gx,70%);top:var(--gy,40%);width:620px;height:620px;margin:-310px 0 0 -310px;border-radius:50%;pointer-events:none;
   background:radial-gradient(closest-side,rgba(255,255,255,.28),rgba(255,255,255,0));transition:left .8s cubic-bezier(.16,1,.3,1),top .8s cubic-bezier(.16,1,.3,1)}
 .gs-copy{align-self:center;padding-bottom:80px}
-.gs-title{margin:24px 0 0;font-family:var(--f-display);font-weight:400;font-size:var(--fs-h2);line-height:1;letter-spacing:-.055em;color:var(--ink);white-space:nowrap}
+.gs-title{margin:24px 0 0;font-family:var(--f-display);font-weight:400;font-size:var(--fs-h2);line-height:1;letter-spacing:-.055em;color:#fff;white-space:nowrap}
 .gs-title .ln{display:block}
-.gs-title .sec{color:rgba(26,23,20,.6)}
+.gs-title .sec{color:rgba(255,255,255,.72)}
 .gs-title .acc{color:#fff}
-.gs-lead{margin:28px 0 0;max-width:460px;font-family:var(--f-body);font-size:var(--fs-lead);line-height:1.5;color:rgba(26,23,20,.82)}
+.gs-lead{margin:28px 0 0;max-width:460px;font-family:var(--f-body);font-size:var(--fs-lead);line-height:1.5;color:rgba(255,255,255,.92)}
 .gs-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
 
 /* console */
@@ -154,11 +144,7 @@
 .gs.in-view .gs-copy>*{opacity:1;transform:none}
 
 @media (prefers-reduced-motion:reduce){
-  .mem-track{animation:none}
   .mem .mem-head>*,.mem .mem-stage>*,.mem .mem-perk,.gs .gs-panel,.gs .gs-copy>*{opacity:1;transform:none;translate:none;transition:none}
   .mem-perk{transform:rotate(var(--rot))}
 }
 
-/* wide screens: ribbons run edge to edge (the section is 1440, the canvas is wider) */
-html.is-wide .mem{overflow:visible}
-html.is-wide .mem-band{left:calc(-80px - var(--bleed));right:calc(-80px - var(--bleed))}
