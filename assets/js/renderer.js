@@ -10,15 +10,16 @@ const renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
 renderer.outputColorSpace=THREE.SRGBColorSpace;
 renderer.toneMapping=THREE.NoToneMapping;
 renderer.setSize(W,H,false);
+// Scale the whole 1440px page to the viewport width; the stage takes the scaled height so the page scrolls.
+const page=document.getElementById('page'), stage=document.getElementById('stage');
 function fit(){
-  const pad=16, vw=innerWidth, vh=innerHeight;
-  const S=state.S=Math.min((vw-pad*2)/W,(vh-pad*2-20)/H);
-  const x=(vw-W*S)/2, y=(vh-20-H*S)/2;
-  art.style.transform=`translate(${x}px,${y}px) scale(${S})`;
+  const S=state.S=document.documentElement.clientWidth/W;
+  page.style.transform=`scale(${S})`;
+  stage.style.height=(page.offsetHeight*S)+'px';
   renderer.setPixelRatio(RENDER?2:Math.min(2,devicePixelRatio*S));
   renderer.setSize(W,H,false);
 }
-addEventListener('resize',fit); fit();
+addEventListener('resize',fit); new ResizeObserver(fit).observe(document.documentElement); fit();
 
 const scene=new THREE.Scene();
 const Z=1600;

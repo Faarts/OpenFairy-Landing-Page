@@ -1,0 +1,79 @@
+/* ==========================================================================
+   Section 02 · Metrics — "Connections Grow. Intelligence Flows."
+   Figma: Open Fairy UIUX › Landing / v7 Wing · Hero + Metrics (frame 89:951)
+   ========================================================================== */
+.metrics{position:relative;width:1440px;height:900px;overflow:visible}
+
+/* background layers: 3D wing render (sits behind the active glass card), shards, brand glow */
+.m-render{position:absolute;left:121px;top:223px;width:1195px;height:747px;display:block;pointer-events:none;user-select:none}
+.m-shards{position:absolute;inset:0;pointer-events:none}
+.m-shard{position:absolute;display:block;border-radius:2px;transform-origin:50% 50%}
+.m-shard.light{background:rgba(255,255,255,.95);box-shadow:0 2px 6px 0 rgba(26,23,20,.12)}
+.m-shard.dark{background:rgba(51,46,43,.75)}
+.m-glow{position:absolute;left:320px;top:300px;width:800px;height:500px;display:block;pointer-events:none}
+
+/* content */
+.m-wrap{position:absolute;left:48px;top:96px;width:1344px}
+.m-head{display:flex;justify-content:space-between;align-items:flex-start}
+.m-title{margin:0;font-family:var(--f-body);font-weight:500;font-size:64px;line-height:1;letter-spacing:-.05em;color:var(--ink)}
+.m-title .ln{display:block}
+.m-title .sec{color:var(--graphite)}
+.m-title .brand{color:var(--ember-lo)}
+.m-sub{margin:110px 0 0;width:340px;font-family:var(--f-body);font-size:16px;line-height:1.5;color:var(--graphite)}
+
+/* cards row: 4 × 238 + 1 × 328 + 4 × 16 gap = 1344 */
+.m-cards{margin-top:80px;height:404px;display:flex;gap:16px;align-items:center}
+.m-card{
+  position:relative;flex:0 0 238px;height:340px;padding:20px;border-radius:20px;
+  display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;
+  background:var(--glass);border:1px solid var(--glass-edge);
+  backdrop-filter:blur(11px);-webkit-backdrop-filter:blur(11px);
+  box-shadow:0 30px 60px -30px rgba(26,23,20,.25),inset 0 1px 0 rgba(255,255,255,.9);
+  outline:none;cursor:pointer;
+  transition:flex-basis .7s cubic-bezier(.16,1,.3,1),height .7s cubic-bezier(.16,1,.3,1),padding .7s cubic-bezier(.16,1,.3,1),border-radius .7s cubic-bezier(.16,1,.3,1),background-color .5s;
+}
+.m-card.is-active{flex-basis:328px;height:404px;padding:24px;border-radius:24px;background:rgba(255,255,255,.72);cursor:default}
+.m-card:focus-visible{box-shadow:0 30px 60px -30px rgba(26,23,20,.25),inset 0 1px 0 rgba(255,255,255,.9),0 0 0 2px var(--orange)}
+
+.m-top{display:flex;justify-content:space-between;align-items:center}
+.m-idx{display:inline-block;padding:5px 10px;border-radius:99px;background:var(--glass);border:1px solid var(--mist);
+  font-family:var(--f-mono);font-weight:500;font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--ink);
+  transition:background-color .4s,color .4s,border-color .4s}
+.m-card.is-active .m-idx{background:var(--night);border-color:var(--night);color:var(--frost)}
+.m-live{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-weight:500;font-size:11px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite)}
+.m-live img{display:block;animation:m-pulse 1.8s ease-in-out infinite}
+@keyframes m-pulse{50%{opacity:.35}}
+
+.m-icon{display:flex;justify-content:center;align-items:center}
+.m-icon img{display:block}
+
+.m-val{display:flex;flex-direction:column;gap:6px;transition:gap .5s}
+.m-card.is-active .m-val{gap:10px}
+.m-num{display:flex;align-items:baseline;gap:6px;white-space:nowrap}
+.m-num .n{font-family:var(--f-body);font-weight:300;font-size:46px;line-height:1;letter-spacing:-.05em;color:var(--ink);transition:font-size .7s cubic-bezier(.16,1,.3,1)}
+.m-card.is-active .m-num .n{font-size:68px}
+.m-num .u{font-family:var(--f-body);font-weight:500;font-size:18px;line-height:1.15;letter-spacing:-.02em;color:var(--graphite);transition:font-size .7s cubic-bezier(.16,1,.3,1)}
+.m-card.is-active .m-num .u{font-size:24px}
+.m-lbl{margin:0;height:32px;font-family:var(--f-mono);font-weight:600;font-size:12px;line-height:1.4;letter-spacing:.06em;text-transform:uppercase;color:var(--graphite)}
+.m-card.is-active .m-lbl{height:auto}
+
+/* progress */
+.m-progress{margin:48px auto 0;width:max-content;display:flex;gap:6px}
+.m-progress button{width:20px;height:3px;padding:0;border:0;border-radius:2px;background:var(--ink);opacity:.15;cursor:pointer;
+  transition:width .6s cubic-bezier(.16,1,.3,1),opacity .3s,background-color .3s}
+.m-progress button:hover{opacity:.35}
+.m-progress button.on{width:48px;background:var(--orange);opacity:1}
+/* larger hit area without changing the 3px bar */
+.m-progress button{position:relative}
+.m-progress button::after{content:"";position:absolute;inset:-10px -3px}
+
+/* reveal on scroll */
+.metrics .m-head,.metrics .m-cards,.metrics .m-progress{opacity:0;transform:translateY(24px);transition:opacity .9s,transform 1.1s cubic-bezier(.16,1,.3,1)}
+.metrics .m-cards{transition-delay:.12s}
+.metrics .m-progress{transition-delay:.24s}
+.metrics.in-view .m-head,.metrics.in-view .m-cards,.metrics.in-view .m-progress{opacity:1;transform:none}
+
+@media (prefers-reduced-motion:reduce){
+  .m-card,.m-num .n,.m-num .u,.m-val,.m-progress button,.metrics .m-head,.metrics .m-cards,.metrics .m-progress{transition:none!important}
+  .m-live img{animation:none}
+}

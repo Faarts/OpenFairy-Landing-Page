@@ -6,15 +6,17 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600&family=Inter+Tight:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/nav.css">
 <link rel="stylesheet" href="assets/css/hero.css">
 <link rel="stylesheet" href="assets/css/cursor.css">
 <link rel="stylesheet" href="assets/css/preloader.css">
+<link rel="stylesheet" href="assets/css/metrics.css">
 </head>
 <body>
 <div id="stage">
+<div id="page">
 <div id="art">
   <canvas id="gl" aria-hidden="true"></canvas>
 
@@ -81,10 +83,83 @@
     <div class="count" id="count">000</div>
   </div>
 </div>
+
+<section id="metrics" class="metrics" aria-labelledby="metrics-title">
+  <img class="m-render" src="assets/images/metrics/wing-render.png" alt="" aria-hidden="true">
+  <div class="m-shards" aria-hidden="true">
+    <i class="m-shard light" style="left:284.96px;top:422.51px;width:50px;height:3px;transform:rotate(-70deg)"></i>
+    <i class="m-shard light" style="left:1176.59px;top:782.14px;width:130px;height:3px;transform:rotate(20deg)"></i>
+    <i class="m-shard dark"  style="left:591.56px;top:741.63px;width:60px;height:4px;transform:rotate(-48deg)"></i>
+    <i class="m-shard light" style="left:35.48px;top:623.1px;width:110px;height:3px;transform:rotate(-25deg)"></i>
+    <i class="m-shard dark"  style="left:1344.23px;top:369.31px;width:70px;height:4px;transform:rotate(60deg)"></i>
+    <i class="m-shard light" style="left:1281.68px;top:91.57px;width:120px;height:3px;transform:rotate(-32deg)"></i>
+    <i class="m-shard dark"  style="left:631.69px;top:187.28px;width:90px;height:4px;transform:rotate(38deg)"></i>
+  </div>
+  <img class="m-glow" src="assets/images/metrics/glow-brand.svg" alt="" aria-hidden="true">
+
+  <div class="m-wrap">
+    <header class="m-head">
+      <h2 id="metrics-title" class="m-title"><span class="ln">Connections Grow.</span><span class="ln"><span class="sec">Intelligence</span> <span class="brand">Flows.</span></span></h2>
+      <p class="m-sub">From community participation to developer adoption, discover the growing OpenFairy ecosystem.</p>
+    </header>
+
+    <div class="m-cards" role="list">
+      <article class="m-card" role="listitem" tabindex="0" data-i="0">
+        <div class="m-top"><span class="m-idx">01</span></div>
+        <div class="m-icon"><img src="assets/images/metrics/members.svg" alt="" width="40" height="40"></div>
+        <div class="m-val">
+          <div class="m-num"><span class="n" data-value="3589">3,589</span></div>
+          <p class="m-lbl">Members</p>
+        </div>
+      </article>
+      <article class="m-card" role="listitem" tabindex="0" data-i="1">
+        <div class="m-top"><span class="m-idx">02</span></div>
+        <div class="m-icon"><img src="assets/images/metrics/keys.svg" alt="" width="40" height="40"></div>
+        <div class="m-val">
+          <div class="m-num"><span class="n" data-value="50571">50,571</span></div>
+          <p class="m-lbl">API Keys Created</p>
+        </div>
+      </article>
+      <article class="m-card is-active" role="listitem" tabindex="0" data-i="2">
+        <div class="m-top"><span class="m-idx">03</span><span class="m-live"><img src="assets/images/metrics/live-dot.svg" alt="" width="6" height="6">Live</span></div>
+        <div class="m-icon"><img src="assets/images/metrics/tokens.svg" alt="" width="56" height="56"></div>
+        <div class="m-val">
+          <div class="m-num"><span class="n" data-value="12.48" data-decimals="2">12.48</span><span class="u">Trillion</span></div>
+          <p class="m-lbl">Weekly Tokens</p>
+        </div>
+      </article>
+      <article class="m-card" role="listitem" tabindex="0" data-i="3">
+        <div class="m-top"><span class="m-idx">04</span></div>
+        <div class="m-icon"><img src="assets/images/metrics/models.svg" alt="" width="40" height="40"></div>
+        <div class="m-val">
+          <div class="m-num"><span class="n" data-value="22">22</span></div>
+          <p class="m-lbl">Models Available</p>
+        </div>
+      </article>
+      <article class="m-card" role="listitem" tabindex="0" data-i="4">
+        <div class="m-top"><span class="m-idx">05</span></div>
+        <div class="m-icon"><img src="assets/images/metrics/share.svg" alt="" width="40" height="40"></div>
+        <div class="m-val">
+          <div class="m-num"><span class="n" data-value="39" data-suffix="%">39%</span></div>
+          <p class="m-lbl">Leading Provider Share</p>
+        </div>
+      </article>
+    </div>
+
+    <div class="m-progress" role="tablist" aria-label="Highlight metric">
+      <button type="button" role="tab" aria-label="Members"></button>
+      <button type="button" role="tab" aria-label="API keys created"></button>
+      <button type="button" role="tab" aria-label="Weekly tokens" class="on" aria-selected="true"></button>
+      <button type="button" role="tab" aria-label="Models available"></button>
+      <button type="button" role="tab" aria-label="Leading provider share"></button>
+    </div>
+  </div>
+</section>
 </div>
-<div class="size">1440 × 900</div>
+</div>
 
 <script type="importmap">{"imports":{"three":"./assets/libs/three/three.module.min.js","three/addons/":"./assets/libs/three/addons/"}}</script>
 <script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/metrics.js"></script>
 </body>
 </html>

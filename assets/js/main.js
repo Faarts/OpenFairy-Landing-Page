@@ -1,7 +1,7 @@
 // Entry point: animation loop that ties all modules together
 import * as THREE from 'three';
 import { W, H, REDUCE, RENDER, OVR, state } from './config.js';
-import { canvas, renderer, scene, camera } from './renderer.js';
+import { art, canvas, renderer, scene, camera } from './renderer.js';
 import { bgU } from './background.js';
 import { U, holder, parts } from './wing.js';        // must load before shards.js (shared seeded random)
 import { updateShards } from './shards.js';
@@ -95,5 +95,8 @@ function frame(now){
 window.SIM=n=>{let t=last;if(state.introT<0)state.introT=t-6000;for(let i=0;i<n;i++){t+=33;frame(t);}return {glow,blast};};
 window.CAP=name=>new Promise(res=>{renderer.render(scene,camera);canvas.toBlob(b=>fetch('/save?n='+name,{method:'POST',body:b}).then(r=>res(r.status)),'image/png');});
 
-function loop(now){requestAnimationFrame(loop);try{frame(now);}catch(err){console.error(err);}}
+// Only render while the hero is on screen.
+let heroOn=true;
+new IntersectionObserver(([e])=>{heroOn=e.isIntersecting;}).observe(art);
+function loop(now){requestAnimationFrame(loop);if(!heroOn&&!RENDER){last=now;return;}try{frame(now);}catch(err){console.error(err);}}
 requestAnimationFrame(loop);
